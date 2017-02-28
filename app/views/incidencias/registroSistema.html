@@ -1,0 +1,75 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h4 style="margin-top: 20px;" class="animated fadeInLeft">Registro de Ticket a Sistemas</h4>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Incidencias>Registro Ticket Sistema</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel form-element-padding">
+            <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body" style="padding-bottom:30px;">
+                    <div class="col-md-12">
+                        <div class="row" style="padding-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label text-right">Urgencia</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control">
+                                        <option>Alta</option>
+                                        <option>Media</option>
+                                        <option>Baja</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label text-right">Impacto</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control">
+                                        <option>Alto</option>
+                                        <option>Medio</option>
+                                        <option>Bajo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:10px;">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label text-right">Prioridad</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="tools">
+                            <h4 class="text-muted">Descripción</h4>
+                            <hr>
+                        </div>
+                        <div class="col-md-12">
+                           <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <textarea  type = "text"
+                                        name = "nombre"
+                                        validate-on="dirty"
+                                        class = "form-control"
+                                        ng-model = "form.dirty"
+                                        required-message="'Error!, Este campo es obligatorio.'"
+                                        required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

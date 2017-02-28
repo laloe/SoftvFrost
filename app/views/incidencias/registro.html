@@ -1,0 +1,167 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h4 style="margin-top: 20px;" class="animated fadeInLeft">Registro de Tickets de Autenticación</h4>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Incidencias>Registro Tickets</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <div class="panel form-element-padding">
+           <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+              <div class="panel-heading">
+                  <div class="tools">
+                      <h4 class="text-muted">Información Técnica</h4>
+                  </div>
+              </div>
+              <div class="panel-body" style="padding-bottom:30px;">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label text-right">Terminal</label>
+                            <div class="col-sm-4 input-group">
+                                <input type="number"
+                                name="nombre"
+                                validate-on="dirty"
+                                class="form-control"
+                                ng-model="$ctrl.san"
+                                required-message="'Error!, Este campo es obligatorio.'"
+                                required placeholder="Buscar por terminal">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" ng-click="$ctrl.getTerminal()">Buscar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="$ctrl.busqueda">
+                        <div class="col-md-6">
+                            <table class="table">
+                                <thead style="background:#2C3F8E">
+                                    <tr>
+                                      <th colspan="5" class="text-center"><span style="color:white">Búsqueda del terminal</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="text-center">
+                                    <td>S/N</td>
+                                    <td>Estado</td>
+                                    <td>MAC</td>
+                                    <td>Site Id</td>
+                                    <td>Subscriptor</td>
+                                  </tr>
+                                  <tr>
+                                    <td>{{ $ctrl.terminalDatos.ESN }}</td>
+                                    <td>{{ $ctrl.terminalDatos.Estatus }}</td>
+                                    <td>{{  }}</td>
+                                    <td>{{ $ctrl.terminalDatos.SAN }}</td>
+                                    <td>{{ $ctrl.terminalDatos.Suscriptor }}</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top:10px;">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label text-right">Motivo</label>
+                            <div class="col-sm-5">
+                                <select id="idmotivo" ng-change="$ctrl.cambioMotivo()" class="form-control" ng-model="$ctrl.selectedMotivo" ng-options="v.Descripcion for v in $ctrl.motivo track by v.IdMotivoTicket">
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label text-right">Prioridad</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="$ctrl.prioridad">
+                                    <option value="" disabled selected>Seleccione prioridad</option>
+                                    <option>Alta</option>
+                                    <option>Media</option>
+                                    <option>Baja</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top:10px;">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label text-right">Síntoma</label>
+                            <div class="col-sm-5">
+                                <select id="idsintoma" ng-change="$ctrl.cambioSintoma()" class="form-control" ng-model="$ctrl.selectedSintoma" ng-options="v.Descripcion for v in $ctrl.sintoma track by v.IdSintoma">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="tools">
+                          <h4 class="text-muted">Datos del Contacto</h4>
+                          <hr>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="row">
+                              <div class="form-group">
+                                  <div class="col-sm-4">
+                                      <select id="idtipoContacto" ng-change="$ctrl.cambioTipoContacto()" class="form-control" ng-model="$ctrl.selectedTipoContacto" ng-options="v.Nombre for v in $ctrl.tipoContacto track by v.IdTipoContacto">
+                                      </select>
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input  type = "text"
+                                      name = "nombre"
+                                      validate-on="dirty"
+                                      class = "form-control"
+                                      ng-model = "$ctrl.nombreContacto"
+                                      required-message="'Error!, Este campo es obligatorio.'"
+                                      required placeholder="Nombre del contrato que notificó la incidencia">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="form-group">
+                                  <div class="col-sm-4">
+                                      <select id="idtipoMedio" ng-change="$ctrl.cambioTipoContacto()" class="form-control" ng-model="$ctrl.selectedMedioComun" ng-options="v.Nombre for v in $ctrl.medioComun track by v.IdMedioComunicacion">
+                                      </select>
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input  type = "text"
+                                      name = "nombre"
+                                      validate-on="dirty"
+                                      class = "form-control"
+                                      ng-model = "$ctrl.numeroContacto"
+                                      required-message="'Error!, Este campo es obligatorio.'"
+                                      required placeholder="Nombre del contrato que notificó la incidencia">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="tools">
+                          <h4 class="text-muted">Descripción</h4>
+                          <hr>
+                      </div>
+                      <div class="col-md-12">
+                         <div class="row">
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                      <textarea  type = "text"
+                                      name = "nombre"
+                                      validate-on="dirty"
+                                      class = "form-control"
+                                      ng-model = "$ctrl.descripcion"
+                                      required-message="'Error!, Este campo es obligatorio.'"
+                                      required></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                     </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="tools">
+                          <p class="text-right">
+                              <button class="btn btn-raised btn-primary btn-sm" type="button" ng-click="$ctrl.limpiar()"><i class="fa fa-eraser" aria-hidden="true"></i>Limpiar</button>
+                              <button class="btn btn-raised btn-primary btn-sm" type="submit" ng-click="$ctrl.guardar()"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Atención</button>
+                          </p>
+                      </div>
+                  </div>
+                </div>
+          </form>
+        </div>
+      </div>
+</div>

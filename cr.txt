@@ -1,0 +1,92 @@
+http://bifrost.isatonline.net/
+egarcia@softv.mx
+cxdb1x
+
+
+ec2-52-26-45-49.us-west-2.compute.amazonaws.com
+User name: Administrator
+Password: CdQ7Ja?Q=G400
+
+http://52.26.45.49/
+con L
+
+https://github.com/turinggroup/angular-validator
+
+
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h4 style="margin-top: 20px;" class="animated fadeInLeft">Bandeja de Tickets</h4>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Incidencias>Bandeja Tickets</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <diav class="panel form-element-padding">
+            <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+                <div class="panel-heading">
+                    <div class="tools">
+                        <h4 class="text-muted">Bandeja</h4>
+                        <p class="text-right">
+                            <a class="btn btn-raised btn-primary btn-sm" type="button" ui-sref="home.incidencias.registro"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                        </p>
+                    </div>
+                </div>
+                <div class="panel-body" style="padding-bottom:30px;">
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-striped table-hover table-condensed">
+                          <thead class="text-center">
+                            <tr>
+                              <th>N De Ticket</th>
+                              <th>Prioridad</th>
+                              <th>Estado</th>
+                              <th>Tipo De Ticket</th>
+                              <th>Cliente</th>
+                              <th>Siteid</th>
+                              <th>Descripción</th>
+                              <th>Nivel</th>
+                              <th>Usuario Asignado</th>
+                              <th>Fecha Registro</th>
+                              <th>Último Usuario</th>
+                              <th>Última Actualización</th>
+                              <th>Fecha Vencimiento</th>
+                              <th>Área</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- dir-paginate="x in $ctrl.ticketsSucuarsales|itemsPerPage:8" -->
+                            <tr dir-paginate="x in $ctrl.tickets | itemsPerPage:5">
+                                <td>
+                                  <a href="" ng-click="$ctrl.verDetalle(x.IdTicket)">{{x.IdTicket}}</a>
+                                </td>
+                                <td>{{x.Prioridad}}</td>
+                                <td>{{x.Estado}}</td>
+                                <td>4651038908</td>
+                                <td>Aguascalientes</td>
+                                <td>{{x.SAN}}</td>
+                                <td>{{x.Descripcion}}</td>
+                                <td>{{x.}}</td>
+                                <td>{{x.Usuario}}</td>
+                                <td>{{x.Fecha}}</td>
+                                <td>{{x.}}</td>
+                                <td>{{x.}}</td>
+                                <td>{{x.}}</td>
+                                <td>{{x.}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div style="padding-left: 20px;" ng-show="$ctrl.showPaginator">
+                            <dir-pagination-controls
+                            max-size="8"
+                            direction-links="true"
+                            boundary-links="true" >
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="panel">
+  <div class="panel">
+    <div class="panel-body">
+      <div class="col-md-6 col-sm-12">
+        <h3 class="animated fadeInLeft">Suscriptores</h3>
+        <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Nuevo Suscriptor</p>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id suscriptor</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Ciudad</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- dir-paginate="x in $ctrl.ticketsSucuarsales|itemsPerPage:8" -->
+              <tr>
+                <td>1</td>
+                <td>Eric Chavez Gomez</td>
+                <td>erictics@gmail.com </td>
+                <td>4651038908</td>
+                <td>Aguascalientes</td>
+                <td>
+                  <button class="btn  btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalle de suscriptor" ng-click="$ctrl.DetalleSuscriptor(x);">
+  										<i class="fa fa-search" aria-hidden="true"></i>
+  									</button>
+                  <button class="btn   btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar suscriptor" ng-click="">
+  										<i class="fa fa-pencil" aria-hidden="true"></i>
+  									</button>
+                  <button class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Terminales" ng-click="$ctrl.DetalleTerminales();"><i class="fa fa-laptop" aria-hidden="true"></i></button>
+                  <button class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos" ng-click="$ctrl.DetalleMovimientos();"><i class="fa fa-exchange" aria-hidden="true"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <div>
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+          </div> -->
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

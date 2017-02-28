@@ -1,0 +1,122 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h3 class="animated fadeInLeft">Nuevo Suscriptor</h3>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Nuevo Suscriptor</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel form-element-padding">
+       <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+          <div class="panel-heading">
+              <div class="tools">
+                  <p class="text-right">
+                      <button class="btn btn-raised btn-default btn-sm" type="button" ng-click="$ctrl.cancel()">Cancelar</button>
+                      <button class="btn btn-raised btn-success btn-sm" type="submit">Guardar</button>
+                  </p>
+              </div>
+          </div>
+          <div class="panel-body" style="padding-bottom:30px;">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Nombre</label>
+                        <div class="col-sm-6">
+                            <input  type = "text"
+                            name = "nombre"
+                            validate-on="dirty"
+                            class = "form-control"
+                            ng-model ="$ctrl.nombre"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Apellidos</label>
+                        <div class="col-sm-6"><input type="text" class="form-control"
+                            name="apellidos"
+                            validate-on="dirty"
+                            class = "form-control"
+                            ng-model = "$ctrl.apellidos"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Teléfono</label>
+                        <div class="col-sm-4"><input type="text" class="form-control"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Email</label>
+                        <div class="col-sm-5"><input type="text" class="form-control"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Ciudad</label>
+                        <div class="col-sm-5"><input type="text" class="form-control"
+                            validate-on="dirty"
+                            name="ciudad"
+                            class = "form-control"
+                            ng-model = "$ctrl.ciudad"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Colonia</label>
+                        <div class="col-sm-5"><input type="text" class="form-control"
+                            validate-on="dirty"
+                            name="colonia"
+                            class = "form-control"
+                            ng-model = "$ctrl.colonia"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Calle</label>
+                        <div class="col-sm-5"><input type="text" class="form-control"
+                            validate-on="dirty"
+                            name="calle"
+                            class = "form-control"
+                            ng-model = "$ctrl.calle"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Número</label>
+                        <div class="col-sm-3"><input type="text" class="form-control"
+                            validate-on="dirty"
+                            class = "form-control"
+                            name="numero"
+                            ng-model = "$ctrl.numero"
+                            required-message="'Error!, Este campo es obligatorio.'"
+                            required></div>
+                        <label class="col-sm-1 control-label text-left">CP</label>
+                        <div class="col-sm-3"><input type="text" class="form-control"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right">Referencia</label>
+                        <div class="col-sm-5"><input type="text" class="form-control"></div>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>

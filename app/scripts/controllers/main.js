@@ -8,10 +8,21 @@
  * Controller of the softvFrostApp
  */
 angular.module('softvFrostApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+	.controller('MainCtrl', function($localStorage, $window) {
+		this.awesomeThings = [
+			'HTML5 Boilerplate',
+			'AngularJS',
+			'Karma'
+		];
+		this.$onInit = function() {
+			vm.usuario = $localStorage.currentUser.usuario;
+		}
+
+		function logOut() {
+			delete $localStorage.currentUser;
+			$window.location.reload();
+		}
+
+		var vm = this;
+		vm.logOut = logOut;
+	});
