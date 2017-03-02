@@ -1,11 +1,18 @@
 'use strict';
 angular.module('softvFrostApp').controller('TerminalCtrl', TerminalCtrl);
 
-function TerminalCtrl(terminalFactory, $uibModal, $state, nuevoSuscriptorFactory) {
+function TerminalCtrl(terminalFactory, $uibModal, $state, SuscriptorFactory, nuevoSuscriptorFactory, $stateParams) {
 	this.$onInit = function() {
-		terminalFactory.getTerminalList().then(function(data) {
-			vm.terminales = data.GetTerminalListResult;
-		});
+		if ($stateParams.idSuscriptor != undefined) {
+			SuscriptorFactory.getTerminals($stateParams.idSuscriptor).then(function(data) {
+				vm.terminales = data.GetDeepIdSuscriptorResult;
+			});
+		} else {
+			terminalFactory.getTerminalList().then(function(data) {
+				vm.terminales = data.GetTerminalListResult;
+
+			});
+		}
 		terminalFactory.getServicioList().then(function(data) {
 			data.GetServicioListResult.unshift({
 				'Nombre': 'Todos los Servicios',
@@ -99,14 +106,13 @@ function TerminalCtrl(terminalFactory, $uibModal, $state, nuevoSuscriptorFactory
 				op: 4
 			};
 		}
-		if (vm.tipoBusqueda == 0) {
+		if (vm.tipoBusqueda == 0 || vm.tipoBusqueda == undefined) {
 			terminalFactory.getTerminalList().then(function(data) {
 				vm.terminales = data.GetTerminalListResult;
 			});
 		} else {
 			terminalFactory.buscarTerminal(vm.obj).then(function(data) {
 				vm.terminales = data.GetFilterTerminalListResult;
-				console.log(data);
 			});
 		}
 	}

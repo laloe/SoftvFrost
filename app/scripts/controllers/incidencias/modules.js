@@ -11,6 +11,12 @@ function incidendiasConf($stateProvider) {
 			name: 'home.incidencias.registro',
 			data: {
 				pageTitle: 'SOFTV | REGISTRO',
+				permissions: {
+					only: ['incidencias'],
+					options: {
+						reload: true
+					}
+				}
 			},
 			url: '/incidencias/registro',
 			templateUrl: 'views/incidencias/registro.html',
@@ -21,6 +27,12 @@ function incidendiasConf($stateProvider) {
 			name: 'home.incidencias.bandeja',
 			data: {
 				pageTitle: 'SOFTV | BANDEJA',
+				permissions: {
+					only: ['bandejadeticketsSelect'],
+					options: {
+						reload: true
+					}
+				}
 			},
 			url: '/incidencias/bandeja',
 			templateUrl: 'views/incidencias/bandeja.html',
@@ -31,6 +43,12 @@ function incidendiasConf($stateProvider) {
 			name: 'home.incidencias.registroSistema',
 			data: {
 				pageTitle: 'SOFTV | REGISTRO TICKETS',
+				permissions: {
+					only: ['registroticketsistemaSelect'],
+					options: {
+						reload: true
+					}
+				}
 			},
 			url: '/incidencias/registroSistema',
 			templateUrl: 'views/incidencias/registroSistema.html',
@@ -42,4 +60,5 @@ function incidendiasConf($stateProvider) {
 	states.forEach(function(state) {
 		$stateProvider.state(state);
 	});
+
 }

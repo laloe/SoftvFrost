@@ -1,6 +1,6 @@
 'use strict';
 
-function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFactory) {
+function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFactory, $location) {
 
 	this.$onInit = function() {
 		SuscriptorFactory.getSuscriptorList().then(function(data) {
@@ -23,26 +23,6 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 			resolve: {
 				suscriptor: function() {
 					return object;
-				}
-			}
-		});
-	}
-
-	function DetalleTerminales(suscriptor) {
-		vm.animationsEnabled = true;
-		var modalInstance = $uibModal.open({
-			animation: vm.animationsEnabled,
-			ariaLabelledBy: 'modal-title',
-			ariaDescribedBy: 'modal-body',
-			templateUrl: 'views/provision/terminalesSuscriptor.html',
-			controller: 'terminaleseSuscriptorCtrl',
-			controllerAs: '$ctrl',
-			backdrop: 'static',
-			keyboard: false,
-			size: 'md',
-			resolve: {
-				suscriptor: function() {
-					return suscriptor;
 				}
 			}
 		});
@@ -122,7 +102,6 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 
 	var vm = this;
 	vm.DetalleSuscriptor = DetalleSuscriptor;
-	vm.DetalleTerminales = DetalleTerminales;
 	vm.DetalleMovimientos = DetalleMovimientos;
 	vm.editarSuscriptor = editarSuscriptor;
 	vm.cambiarBusqueda = cambiarBusqueda;
