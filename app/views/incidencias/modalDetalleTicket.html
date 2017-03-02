@@ -67,7 +67,11 @@
                                     required-message="'Error!, Este campo es obligatorio.'"
                                     required></textarea>
                                 </div>
-                                <div class="col-md-12 text-right">
+                                <div class="col-md-6">
+                                    <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
+                                </div>
+                                <div class="col-md-6 text-right">
                                     <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-plus-circle"></i>  Agregar Avance</button>
                                 </div>
                                 <br><br>
@@ -150,8 +154,10 @@
                                     required></textarea>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" name="files">
-                                    <button type="button" ng-click="$ctrl.ValidaArchivo()">Enviar</button>
+                                    <!-- <input type="file" name="files">
+                                    <button type="button" ng-click="$ctrl.ValidaArchivo()">Enviar</button> -->
+                                    <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-minus-circle"></i>  Cerrar Avance</button>
