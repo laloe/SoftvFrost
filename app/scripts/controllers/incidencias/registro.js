@@ -45,6 +45,20 @@ function RegistroCtrl(ngNotify, incidenciasFactory, $state, $filter) {
 		}
 	}
 
+	function change() {
+		if (vm.selectedMedioComun.IdMedioComunicacion == 1) {
+			vm.place = 'e-mail del contacto';
+		}else if (vm.selectedMedioComun.IdMedioComunicacion == 2) {
+			vm.place = 'número del contacto';
+		}else if (vm.selectedMedioComun.IdMedioComunicacion == 3) {
+			vm.place = 'nombre del contacto';
+		}else if (vm.selectedMedioComun.IdMedioComunicacion == 4) {
+			vm.place = 'medio del contacto';
+		}else {
+			vm.place = 'medio del contacto';
+		}
+	}
+
 	function getTerminal() {
 		if (vm.san == undefined || vm.san == '') {
 			ngNotify.set('Inserte número de terminal.', 'error');
@@ -64,6 +78,8 @@ function RegistroCtrl(ngNotify, incidenciasFactory, $state, $filter) {
 	var vm = this;
 	vm.guardar = guardar;
 	vm.getTerminal = getTerminal;
+	vm.change = change;
+	vm.place = 'medio del contacto';
 	initial();
 }
 angular.module('softvFrostApp').controller('RegistroCtrl', RegistroCtrl);

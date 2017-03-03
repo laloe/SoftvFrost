@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="form-group">
                             <label class="col-sm-1 control-label text-right">Terminal</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-7">
                                 <input type="number"
                                 name="terminal"
                                 validate-on="dirty"
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="row" ng-show="$ctrl.busqueda">
-                        <div class="col-md-6">
+                        <div class="col-md-11">
                             <table class="table">
                                 <thead style="background:#2C3F8E">
                                     <tr>
@@ -121,7 +121,7 @@
                           <div class="row">
                               <div class="form-group">
                                   <div class="col-sm-4">
-                                      <select validate-on="dirty" name="medioCom" class="form-control" class="form-control" ng-model="$ctrl.selectedMedioComun" ng-options="v.Nombre for v in $ctrl.medioComun track by v.IdMedioComunicacion" required-message="'Error!, Este campo es obligatorio.'" required>
+                                      <select validate-on="dirty" name="medioCom" class="form-control" class="form-control" ng-change="$ctrl.change()" ng-model="$ctrl.selectedMedioComun" ng-options="v.Nombre for v in $ctrl.medioComun track by v.IdMedioComunicacion" required-message="'Error!, Este campo es obligatorio.'" required>
                                           <option value="" disabled selected>Seleccione medio de comunicación</option>
                                       </select>
                                   </div>
@@ -132,7 +132,7 @@
                                       class="form-control"
                                       ng-model="$ctrl.numeroContacto"
                                       required-message="'Error!, Este campo es obligatorio.'"
-                                      required placeholder="Nombre del contrato que notificó la incidencia">
+                                      required placeholder="{{$ctrl.place}}">
                                   </div>
                               </div>
                           </div>
