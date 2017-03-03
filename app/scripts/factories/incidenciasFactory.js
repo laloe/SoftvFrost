@@ -14,6 +14,7 @@ angular.module('softvFrostApp')
 			getSolucion: '/SolucionTicket/GetSolucionTicketList',
 			closeTicket: '/Ticket/UpdateTicket'
 		};
+
 		factory.addTicket = function(obj) {
 			var deferred = $q.defer();
 			var Parametros = {
@@ -28,9 +29,9 @@ angular.module('softvFrostApp')
 						"Prioridad": obj.prioridad,
                         "Descripcion": obj.descripcion,
 						"IdTipoContacto":obj.tipoContacto,
-						"NombreContacto": obj.nombreContrato,
+						"NombreContacto": obj.nombreContacto,
 						"IdMedioComunicacion":obj.medioComun,
-						"NumeroContacto": obj.numeroContrato,
+						"NumeroContacto": obj.numeroContacto,
 						"FechaCierre": "",
 						"Estado": "P"
                     }
@@ -210,6 +211,29 @@ angular.module('softvFrostApp')
 				deferred.resolve(response.data);
 			}).catch(function(data) {
 				deferred.reject(data);
+			});
+			return deferred.promise;
+		}
+
+		factory.UpdateFile = function(file, Distribuidor) {
+			var deferred = $q.defer();
+			var data = new FormData();
+			for (var i = 0; i < file.length; i++) {
+				console.log(file[i]);
+				data.append("file" + i, file[i]);
+			}
+			data.append("Distribuidor", Distribuidor)
+
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token,
+					'Content-Type': undefined
+				}
+			};
+			$http.post(globalService.getUrl() + paths.UploadFile, data, config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(response) {
+				deferred.reject(response);
 			});
 			return deferred.promise;
 		}

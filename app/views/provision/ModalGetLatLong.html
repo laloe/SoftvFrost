@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <button class="close" aria-label="Close" type="button" ng-click="ctrl.cancel()">×</button>
+  <h4 class="modal-title">Selecciona Latitud y longuitud</h4>
+</div>
+<div class="modal-body" style="padding-top:20px;">
+
+  <div>
+    <ng-map center="23.96617587126503, -101.953125" zoom="4" on-click="ctrl.getpos($event)">
+      <marker position="{{ctrl.latlng}}" title="Selecciona tu posición" on-dragend="ctrl.getpos($event)" animation="Animation.BOUNCE" animation="DROP" draggable="true"></marker>
+    </ng-map>
+    {{ctrl.latlng}}
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cancelar</button>
+  <button class="btn btn-primary" type="button" ng-click="ctrl.ok()">Asignar</button>
+</div>

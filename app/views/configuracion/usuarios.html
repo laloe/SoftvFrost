@@ -1,0 +1,74 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h3 class="animated fadeInLeft">Usuarios</h3>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Configuración>usuarios</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel-heading">
+    <div class="tools">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="...">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+
+            </div>
+            <!-- /btn-group -->
+          </div>
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+
+        <div class="col-md-5">
+          <div class="panel-body" style="margin-top:25px;">
+
+            <button ui-sref="home.provision.nuevousuario" type="button" class="btn pull-right btn-raised btn-success" permission permission-only="'terminalesAdd'" ui-sref="home.provision.terminalesNueva"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel form-element-padding">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ROL</th>
+          <th>NOMBRE</th>
+          <th>PASSWORD</th>
+          <th>STATUS</th>
+          <th>OPCIONES</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr dir-paginate="x in $ctrl.Usuarios|itemsPerPage:5">
+          <td>{{ x.IdUsuario }}</td>
+          <td>{{ x.Nombre }}</td>
+          <td>{{ x.Usuario }}</td>
+
+          <td>{{x.Password}}</td>
+          <td ng-if="x.Estado==true">
+            <span class="label label-outline label-success">Activo</span>
+          </td>
+          <td ng-if="x.Estado==false">
+            <span class="label label-outline label-danger">Desactivado</span>
+          </td>
+          <td>
+            <a ng-click="$ctrl.EditaUsuario(x)" permission permission-only="'usuariosUpdate'" class="btn  btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar usuario"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding-left: 20px;" ng-show="true">
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h3 class="animated fadeInLeft">Permisos</h3>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Configuración>Permisos</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel-heading">
+    <div class="tools">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="panel-body">
+            <label class="control-label text-left">San</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel-body">
+            <label class="control-label text-left">Suscriptor</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel-body">
+            <label class="control-label text-left">Estado</label>
+            <select class="form-control" ng-model="$ctrl.estado" ng-options="v.Nombre for v in $ctrl.estados track by v.IdEstado"></select>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel-body" style="margin-top:25px;">
+                <button type="button" class="btn btn-raised btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                <button type="button" class="btn pull-right btn-raised btn-success"  permission permission-only="'terminalesAdd'" ui-sref="home.provision.terminalesNueva"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel form-element-padding">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>SAN ID</th>
+          <th>Suscriptor</th>
+          <th>ESN</th>
+          <th>Servicio</th>
+          <th>Estatus</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr dir-paginate="x in $ctrl.terminales|itemsPerPage:5">
+          <td>{{ x.SAN }}</td>
+          <td>{{ x.Suscriptor }}</td>
+          <td>{{ x.ESN }}</td>
+          <td>{{x.Servicio}}</td>
+          <td>{{x.Estatus}}</td>
+
+          <td>
+            <a ng-click="$ctrl.GestionTerminal(x)" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gestionar Terminal"><i class="fa fa-laptop" aria-hidden="true"></i></a>
+            <a ui-sref="home.provision.terminalesmovimientos" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos"><i class="fa fa-exchange" aria-hidden="true"></i></a>
+            <a ng-click="$ctrl.EditarTerminal(x)" permission permission-only="'terminalesUpdate'" class="btn  btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar Terminal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding-left: 20px;" ng-show="true">
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+    </div>
+  </div>
+</div>

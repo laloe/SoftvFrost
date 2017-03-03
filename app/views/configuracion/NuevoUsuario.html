@@ -1,0 +1,81 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h3 class="animated fadeInLeft">{{$ctrl.titulo}}</h3>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Configuración>usuarios</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row ">
+      <div class="col-md-6">
+        <div class="row form-group">
+          <div class="col-md-12">
+            <b>Nombre de usuario</b>
+            <input type="text" class="form-control" ng-model="$ctrl.Nombre">
+          </div>
+          <div class="col-md-12">
+            <b>Descripción de usuario</b>
+            <input type="text" class="form-control" ng-model="$ctrl.Descripcion">
+          </div>
+          <div class="col-md-12">
+            <b>Correo</b>
+            <input type="text" class="form-control" ng-model="$ctrl.Correo" placeholder="correo@mail.com">
+          </div>
+          <div class="col-md-12">
+            <b>seleccioa Rol</b>
+            <select class="form-control" ng-options="item as item.Nombre for item in $ctrl.Roles track by item.IdRol" ng-model="$ctrl.Rol">
+                                  <option value="">selecciona</option>
+                                    </select>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="col-md-6 ">
+
+
+        <div class="row" ng-show="$ctrl.ValidatePanel">
+          <div class="col-md-8">
+            <b><i class="fa fa-key"></i>  ¿Necesitas modificar la contraseña?</b>
+            <input type="password" class="form-control" ng-model="$ctrl.PassValidate" placeholder="contraseña anterior">
+          </div>
+          <div class="col-md-4">
+            <br>
+            <button class="btn btn-warning btn-sm" ng-click="$ctrl.ValidaPass()">Validar</button>
+          </div>
+
+        </div>
+        <div class="row form-group" ng-show="$ctrl.passwordPanel">
+
+
+
+          <div class="col-md-12">
+
+            <b>Contraseña</b>
+            <input type="Password" class="form-control" ng-model="$ctrl.Contrasena">
+          </div>
+          <div class="col-md-12">
+            <b>Repite la contraseña</b>
+            <input type="Password" class="form-control" ng-model="$ctrl.Contrasena2">
+          </div>
+          <div class="col-md-12">
+            <span class="text-danger"><b><i class="fa fa-key"></i> Ingresa una contraseña segura para la cuenta</b></span>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="panel-footer text-right">
+      <button class="btn btn-success btn-sm" ng-click="$ctrl.GuardarUsuario();">Guardar</button>
+      <button class="btn btn-danger btn-sm" ui-sref="home.provision.usuarios">Cancelar</button>
+
+    </div>

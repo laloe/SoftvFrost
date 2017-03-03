@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <button class="close" aria-label="Close" type="button" ng-click="ctrl.cancel()">×</button>
+    <h4 class="modal-title">Gestión Terminal #{{ctrl.Terminal.SAN}}</h4>
+</div>
+<div class="modal-body" style="padding-top:20px;">
+<div class="row form-group">
+  <div class="col-md-6">
+  <b style="font-size:14px;">Servicio:</b>
+  <p style="font-size:14px;">{{ctrl.Terminal.Servicio}}</p>
+  </div>
+  <div class="col-md-6">
+  <b style="font-size:14px;">Suscriptor:</b>
+  <p style="font-size:14px;">{{ctrl.Terminal.Suscriptor}}</p>
+  </div>
+<div class="col-md-6">
+
+<b style="font-size:14px;">Fecha Alta:</b>
+<p style="font-size:14px;">{{ctrl.Terminal.FechaAlta}}</p>
+</div>
+<div class="col-md-6">
+
+<b style="font-size:14px;">Fecha Baja:</b>
+<p style="font-size:14px;">{{ctrl.Terminal.FechaSuspension}}</p>
+</div>
+
+<div class="col-md-6">
+
+<b style="font-size:14px;">Latitud:</b><br>
+<p style="font-size:14px;">{{ctrl.Terminal.Latitud}}</p>
+</div>
+
+<div class="col-md-6">
+<b style="font-size:14px;">Longitud:</b>
+<p style="font-size:14px;">{{ctrl.Terminal.Longitud}}</p>
+</div>
+<div class="col-md-6">
+<b style="font-size:14px;">Status:</b>
+<p style="font-size:14px;">{{ctrl.Terminal.Estatus}}</p>
+</div>
+<div class="col-md-6">
+<b style="font-size:14px;">ESN:</b><br>
+<p style="font-size:14px;">{{ctrl.Terminal.ESN}}</p>
+</div>
+</div>
+
+<div class="row form-group text-center">
+<b><h5>Transacciones</h5></b>
+<table class="table">
+
+</table>
+</div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cerrar</button>
+
+</div>

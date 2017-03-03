@@ -1,0 +1,59 @@
+<style type="text/css">
+	.scrollDiv{
+	    height: 250px;
+	    overflow: auto;
+	    overflow-x: hidden;
+	}
+
+</style>
+<div class="modal-header">
+    <button class="close" aria-label="Close" type="button" ng-click="$ctrl.cancel()">×</button>
+    <h4 class="modal-title">Detalle de suscriptor #{{$ctrl.suscriptor.IdSuscriptor}}</h4>
+</div>
+<div class="modal-body" style="padding-top:20px;">
+   <div class="row form-group">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <h5><strong>Nombre: </strong>{{$ctrl.suscriptor.Nombre}}</h5>
+                <h5><strong>Apellidos: </strong>{{$ctrl.suscriptor.Apellido}}</h5>
+                <h5><strong>Teléfono: </strong>{{$ctrl.suscriptor.Telefono}}</h5>
+                <h5><strong>Email: </strong>{{$ctrl.suscriptor.Email}}</h5>
+                <h5><strong>Referencia: </strong>{{$ctrl.suscriptor.Referencia}}</h5>
+            </div>
+            <div class="col-md-6">
+                <h5><strong>Ciudad: </strong>{{$ctrl.suscriptor.Ciudad}}</h5>
+                <h5><strong>Colonia: </strong>{{$ctrl.suscriptor.Colonia}}</h5>
+                <h5><strong>Calle: </strong>{{$ctrl.suscriptor.Calle}}</h5>
+                <h5><strong>Número: </strong>{{$ctrl.suscriptor.Numero}}</h5>
+                <h5><strong>CP: </strong>{{$ctrl.suscriptor.CP}}</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <h4 class="text-center">Terminales</h4>
+            <div class="col-md-12 scrollDiv">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Site ID</th>
+                        <th>ESN</th>
+                        <th>Estado</th>
+                        <th>Servicio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="x in $ctrl.terminales">
+                        <td>{{ x.SAN }}</td>
+                        <td>{{ x.ESN }}</td>
+                        <td>{{ x.Estatus }}</td>
+                        <td>{{ x.Servicio }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+   </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cancelar</button>
+</div>

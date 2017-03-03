@@ -48,77 +48,84 @@
                     </div>
 
                     <div class="tab-pane" id="tab2">
-                        <div class="col-md-6" style="padding-top: 15px;">
-                            <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Registrar Avance</h4>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <p class="text-muted">Fecha del Registro: {{$ctrl.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</p><br>
-                            <p>Usuario: <span style="color:#51AAFA">{{$ctrl.usuario}}</span></p>
-                        </div>
-                        <div class="col-md-12">
-                            <h5 class="text-muted">Descripción del Avance</h5>
+                        <form angular-validator-submit="$ctrl.avanceTicket()" name="avance" class="form-horizontal" novalidate angular-validator>
+                            <div class="col-md-6" style="padding-top: 15px;">
+                                <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Registrar Avance</h4>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p class="text-muted">Fecha del Registro: {{$ctrl.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</p><br>
+                                <p>Usuario: <span style="color:#51AAFA">{{$ctrl.usuario}}</span></p>
+                            </div>
                             <div class="col-md-12">
-                                <textarea type = "text"
-                                name = "nombre"
-                                validate-on="dirty"
-                                class = "form-control"
-                                ng-model = "form.dirty"
-                                required-message="'Error!, Este campo es obligatorio.'"
-                                required></textarea>
-                            </div>
-                            <div class="col-md-12 text-right">
-                                <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Agregar Avance</button>
-                            </div>
-                            <br><br>
-                            <div class="row">
-                                <div class="col-md-6" style="padding-top: 15px;">
-                                    <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Historial de Avance</h4>
-                                </div>
+                                <h5 class="text-muted">Descripción del Avance</h5>
                                 <div class="col-md-12">
-                                    <table class="table">
-                                        <thead style="background:#51AAFA">
-                                            <tr>
-                                              <th>Fecha</th>
-                                              <th>Usuario</th>
-                                              <th>Tipo</th>
-                                              <th>Avance</th>
-                                              <th>Archivo</th>
-                                              <th>Opción</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-show="$ctrl.sinDatos">
-                                                <td colspan="5" class="text-center">No se encontraron datos</td>
-                                            </tr>
-                                          <tr dir-paginate="x in $ctrl.desglose | itemsPerPage:5">
-                                            <td>{{  }}</td>
-                                            <td>{{  }}</td>
-                                            <td>{{  }}</td>
-                                            <td>{{  }}</td>
-                                            <td>{{  }}</td>
-                                            <td></td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
+                                    <textarea type = "text"
+                                    name = "avanc"
+                                    validate-on="dirty"
+                                    class = "form-control"
+                                    ng-model = "$ctrl.avance"
+                                    required-message="'Error!, Este campo es obligatorio.'"
+                                    required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-plus-circle"></i>  Agregar Avance</button>
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    <div class="col-md-6" style="padding-top: 15px;">
+                                        <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Historial de Avance</h4>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead style="background:#51AAFA">
+                                                <tr>
+                                                  <th>Fecha</th>
+                                                  <th>Usuario</th>
+                                                  <th>Tipo</th>
+                                                  <th>Avance</th>
+                                                  <th>Archivo</th>
+                                                  <th>Opción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-show="$ctrl.sinDatos">
+                                                    <td colspan="5" class="text-center">No se encontraron datos</td>
+                                                </tr>
+                                              <tr dir-paginate="x in $ctrl.desglose | itemsPerPage:5">
+                                                <td>{{  }}</td>
+                                                <td>{{  }}</td>
+                                                <td>{{  }}</td>
+                                                <td>{{  }}</td>
+                                                <td>{{  }}</td>
+                                                <td></td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     <div class="tab-pane" id="tab3">
-                        <div class="col-md-6" style="padding-top: 15px;">
-                            <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Cierre de ticket de incidencia</h4>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <p class="text-muted">Fecha del Registro: {{$ctrl.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</p><br>
-                            <p>Usuario: <span style="color:#51AAFA">{{$ctrl.usuario}}</span></p>
-                        </div><br>
-                        <div class="row">
+                        <form angular-validator-submit="$ctrl.closeTicket()" name="cerrar" class="form-horizontal" novalidate angular-validator>
+                            <div class="col-md-6" style="padding-top: 15px;">
+                                <h4 class="text-muted"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>  Cierre de ticket de incidencia</h4>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p class="text-muted">Fecha del Registro: {{$ctrl.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</p><br>
+                                <p>Usuario: <span style="color:#51AAFA">{{$ctrl.usuario}}</span></p>
+                            </div><br>
                             <div class="row">
                                 <div class="form-group">
                                     <label class="col-sm-2 col-md-offset-1 control-label text-left">Solución</label>
                                     <div class="col-sm-8">
-                                        <select id="idsolucion" class="form-control" ng-model="$ctrl.selectedSolucion" ng-options="v.Descripcion for v in $ctrl.solucion track by v.IdSolucion">
+                                        <select validate-on="dirty" name="solucion" class="form-control" ng-model="$ctrl.selectedSolucion" ng-options="v.Descripcion for v in $ctrl.solucion track by v.IdSolucion" required-message="'Error!, Este campo es obligatorio.'" required>
+                                            <option value="" disabled selected>Seleccione solución</option>
                                         </select>
                                     </div>
                                 </div>
@@ -127,28 +134,36 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-md-offset-1 control-label text-left">Causa</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" ng-model="$ctrl.causa">
+                                        <input name="causaCierre"
+                                        validate-on="dirty"
+                                        class="form-control"
+                                        ng-model="$ctrl.causa"
+                                        required-message="'Error!, Este campo es obligatorio.'"
+                                        required>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <h5 class="text-muted">Descripción de la solución</h5>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" ng-model="$ctrl.descripcionSolucion"></textarea>
+                                    <textarea name="descripcionSolucion"
+                                    validate-on="dirty"
+                                    class="form-control"
+                                    ng-model="$ctrl.descripcionSolucion"
+                                    required-message="'Error!, Este campo es obligatorio.'"
+                                    required></textarea>
                                 </div>
-                                <div class="col-md-12 text-right">
-                                    <div class="col-md-6">
-                                        <form action="">
-                                            <input type="file" file-model="imagen">
-                                            <button type="button" ng-click="enviar()">Enviar</button>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-raised btn-primary btn-sm" type="submit" ng-click="$ctrl.closeTicket()"><i class="fa fa-minus-circle" aria-hidden="true" ng-click="$ctrl.closeTicket()"></i>  Cerrar Avance</button>
-                                    </div>
+                                <div class="col-md-6">
+                                    <!-- <input type="file" name="files">
+                                    <button type="button" ng-click="$ctrl.ValidaArchivo()">Enviar</button> -->
+                                    <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-minus-circle"></i>  Cerrar Avance</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

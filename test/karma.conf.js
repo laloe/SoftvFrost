@@ -31,8 +31,12 @@ module.exports = function(config) {
       'bower_components/tg-angular-validator/dist/angular-validator.js',
       'bower_components/angular-base64/angular-base64.js',
       'bower_components/ngstorage/ngStorage.js',
+      'bower_components/ngmap/build/scripts/ng-map.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-block-ui/dist/angular-block-ui.js',
+      'bower_components/angular-permission/dist/angular-permission.js',
+      'bower_components/angular-permission/dist/angular-permission-ui.js',
+      'bower_components/angular-permission/dist/angular-permission-ng.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -19,7 +19,10 @@ angular.module('softvFrostApp', [
 		'angularUtils.directives.dirPagination',
 		'ngStorage',
 		'ui.bootstrap',
-		'blockUI'
+		'blockUI',
+		'ngMap',
+		'permission', 'permission.ui'
+
 	])
 	.config(['$provide', '$urlRouterProvider', '$httpProvider', function($provide, $urlRouterProvider, $httpProvider) {
 		$urlRouterProvider.otherwise('/auth/login');
@@ -46,18 +49,27 @@ angular.module('softvFrostApp', [
 		});
 		$httpProvider.interceptors.push('ErrorHttpInterceptor');
 		$httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+
 		delete $httpProvider.defaults.headers.common['X-Requested-With'];
 	}])
 	.constant('APP_CONFIG', window.appConfig)
-	.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$location', function($rootScope, $state, $stateParams, $localStorage, $location) {
+	.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$location', 'permissionsFactory', 'PermPermissionStore', function($rootScope, $state, $stateParams, $localStorage, $location, permissionsFactory, PermPermissionStore) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
-		// $rootScope.$on('$locationChangeStart', function() {
-		// 	if ($localStorage.currentUser) {
-		// 		$location.path('/home');
-		// 	} else {
-		// 		$location.path('/auth/login');
-		// 	}
-		// });
+		if ($localStorage.currentUser) {
+			$location.path('/home');
+			var permissions = permissionsFactory.on();
+			PermPermissionStore.definePermission('anonymous', function() {
+				return false;
+			});
+			PermPermissionStore.defineManyPermissions(permissions, function() {
+				return true;
+			});
+		} else {
+			$location.path('/auth/login');
+			PermPermissionStore.definePermission('anonymous', function() {
+				return true;
+			});
+		}
 
 	}]);

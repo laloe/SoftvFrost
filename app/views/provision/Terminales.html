@@ -10,30 +10,29 @@
   <div class="panel-heading">
     <div class="tools">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="panel-body">
             <label class="control-label text-left">San</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="$ctrl.bsan" ng-change="$ctrl.busquedaCambio(1)">
           </div>
         </div>
         <div class="col-md-3">
           <div class="panel-body">
             <label class="control-label text-left">Suscriptor</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="$ctrl.bsus" ng-change="$ctrl.busquedaCambio(2)">
           </div>
         </div>
         <div class="col-md-3">
           <div class="panel-body">
-            <label class="control-label text-left">Estado</label>
-            <select class="form-control"></select>
+            <label class="control-label text-left">Servicio</label>
+            <select class="form-control" ng-model="$ctrl.bservicio" ng-change="$ctrl.busquedaCambio(3)" ng-options="v.Nombre for v in $ctrl.servicios track by v.IdServicio"></select>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="panel-body" style="margin-top:25px;">
-              <p class="text-center">
-                  <button type="button" class="btn btn-raised btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-              </p>
-          </div>
+        <div class="col-md-4">
+            <div class="panel-body" style="margin-top:25px;">
+                <button type="button" class="btn btn-raised btn-primary" ng-click="$ctrl.buscar()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                <button type="button" class="btn pull-right btn-raised btn-success"  permission permission-only="'terminalesAdd'" ui-sref="home.provision.terminalesNueva"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+            </div>
         </div>
       </div>
     </div>
@@ -42,31 +41,33 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Site ID</th>
-          <th>ESN</th>
-          <th>Estado</th>
+          <th>San</th>
           <th>Suscriptor</th>
-          <th>Banda</th>
-          <th>BEAM</th>
+          <th>ESN</th>
           <th>Servicio</th>
-          <th>Acciones</th>
+          <th>Estatus</th>
+
         </tr>
       </thead>
       <tbody>
         <tr dir-paginate="x in $ctrl.terminales|itemsPerPage:5">
           <td>{{ x.SAN }}</td>
+          <td>{{ x.Suscriptor }}</td>
           <td>{{ x.ESN }}</td>
-          <td>{{ x.Estatus }}</td>
-          <td>Eric Alejandro Chavez Gomez</td>
-          <td>KA</td>
-          <td>BEAM-3 México DF</td>
-          <td>INTERNET_RESI_B3_3M_0.5M</td>
+          <td>{{x.Servicio}}</td>
+          <td>{{x.Estatus}}</td>
+
           <td>
-            <a ui-sref="home.provision.terminalesgestion" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gestionar Terminal"><i class="fa fa-laptop" aria-hidden="true"></i></a>
+            <a ng-click="$ctrl.GestionTerminal(x)" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gestionar Terminal"><i class="fa fa-laptop" aria-hidden="true"></i></a>
             <a ui-sref="home.provision.terminalesmovimientos" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos"><i class="fa fa-exchange" aria-hidden="true"></i></a>
+            <a ng-click="$ctrl.EditarTerminal(x)" permission permission-only="'terminalesUpdate'" class="btn  btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar Terminal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
           </td>
         </tr>
       </tbody>
     </table>
+    <div style="padding-left: 20px;" ng-show="true">
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+    </div>
   </div>
 </div>

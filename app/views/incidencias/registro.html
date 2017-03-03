@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-12">
       <div class="panel form-element-padding">
-           <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+           <form angular-validator-submit="$ctrl.guardar()" name="myForm" class="form-horizontal" novalidate angular-validator angular-validator-quiet>
               <div class="panel-heading">
                   <div class="tools">
                       <h4 class="text-muted">Información Técnica</h4>
@@ -20,17 +20,20 @@
                     <div class="row">
                         <div class="form-group">
                             <label class="col-sm-1 control-label text-right">Terminal</label>
-                            <div class="col-sm-4 input-group">
+                            <div class="col-sm-4">
                                 <input type="number"
-                                name="nombre"
+                                name="terminal"
                                 validate-on="dirty"
                                 class="form-control"
                                 ng-model="$ctrl.san"
                                 required-message="'Error!, Este campo es obligatorio.'"
                                 required placeholder="Buscar por terminal">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" ng-click="$ctrl.getTerminal()">Buscar</button>
-                                </span>
+                                <!-- <div class="col-md-5">
+                                    <button class="btn btn-primary" type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar" ng-click="$ctrl.getTerminal()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </div> -->
+                            </div>
+                            <div class="col-md-3">
+                                <a class="btn btn-primary btn-sm" ng-click="$ctrl.getTerminal()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar"><i class="fa fa-search"></i> Buscar</a>
                             </div>
                         </div>
                     </div>
@@ -65,13 +68,14 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label text-right">Motivo</label>
                             <div class="col-sm-5">
-                                <select id="idmotivo" ng-change="$ctrl.cambioMotivo()" class="form-control" ng-model="$ctrl.selectedMotivo" ng-options="v.Descripcion for v in $ctrl.motivo track by v.IdMotivoTicket">
+                                <select name="motivo" validate-on="dirty" class="form-control" ng-model="$ctrl.selectedMotivo" ng-options="v.Descripcion for v in $ctrl.motivo track by v.IdMotivoTicket" required-message="'Error!, Este campo es obligatorio.'" required>
+                                    <option value="" disabled selected>Seleccione motivo</option>
                                 </select>
                             </div>
                             <label class="col-sm-1 control-label text-right">Prioridad</label>
                             <div class="col-sm-4">
-                                <select class="form-control" ng-model="$ctrl.prioridad">
-                                    <option value="" disabled selected>Seleccione prioridad</option>
+                                <select name="prioridad" validate-on="dirty" class="form-control" ng-model="$ctrl.prioridad" required-message="'Error!, Este campo es obligatorio.'" required>
+                                    <option value disabled>Seleccione prioridad</option>
                                     <option>Alta</option>
                                     <option>Media</option>
                                     <option>Baja</option>
@@ -83,7 +87,8 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label text-right">Síntoma</label>
                             <div class="col-sm-5">
-                                <select id="idsintoma" ng-change="$ctrl.cambioSintoma()" class="form-control" ng-model="$ctrl.selectedSintoma" ng-options="v.Descripcion for v in $ctrl.sintoma track by v.IdSintoma">
+                                <select validate-on="dirty" name="sintoma" class="form-control" ng-model="$ctrl.selectedSintoma" ng-options="v.Descripcion for v in $ctrl.sintoma track by v.IdSintoma" required-message="'Error!, Este campo es obligatorio.'" required>
+                                    <option value="" disabled selected>Seleccione síntoma</option>
                                 </select>
                             </div>
                         </div>
@@ -98,15 +103,16 @@
                           <div class="row">
                               <div class="form-group">
                                   <div class="col-sm-4">
-                                      <select id="idtipoContacto" ng-change="$ctrl.cambioTipoContacto()" class="form-control" ng-model="$ctrl.selectedTipoContacto" ng-options="v.Nombre for v in $ctrl.tipoContacto track by v.IdTipoContacto">
+                                      <select validate-on="dirty" name="tipo" class="form-control" ng-model="$ctrl.selectedTipoContacto" ng-options="v.Nombre for v in $ctrl.tipoContacto track by v.IdTipoContacto" required-message="'Error!, Este campo es obligatorio.'" required>
+                                          <option value="" disabled selected>Seleccione tipo contacto</option>
                                       </select>
                                   </div>
                                   <div class="col-sm-8">
-                                      <input  type = "text"
-                                      name = "nombre"
+                                      <input type="text"
+                                      name="contacto"
                                       validate-on="dirty"
-                                      class = "form-control"
-                                      ng-model = "$ctrl.nombreContacto"
+                                      class="form-control"
+                                      ng-model="$ctrl.nombreContacto"
                                       required-message="'Error!, Este campo es obligatorio.'"
                                       required placeholder="Nombre del contrato que notificó la incidencia">
                                   </div>
@@ -115,15 +121,16 @@
                           <div class="row">
                               <div class="form-group">
                                   <div class="col-sm-4">
-                                      <select id="idtipoMedio" ng-change="$ctrl.cambioTipoContacto()" class="form-control" ng-model="$ctrl.selectedMedioComun" ng-options="v.Nombre for v in $ctrl.medioComun track by v.IdMedioComunicacion">
+                                      <select validate-on="dirty" name="medioCom" class="form-control" class="form-control" ng-model="$ctrl.selectedMedioComun" ng-options="v.Nombre for v in $ctrl.medioComun track by v.IdMedioComunicacion" required-message="'Error!, Este campo es obligatorio.'" required>
+                                          <option value="" disabled selected>Seleccione medio de comunicación</option>
                                       </select>
                                   </div>
                                   <div class="col-sm-8">
-                                      <input  type = "text"
-                                      name = "nombre"
+                                      <input type="text"
+                                      name="medio"
                                       validate-on="dirty"
-                                      class = "form-control"
-                                      ng-model = "$ctrl.numeroContacto"
+                                      class="form-control"
+                                      ng-model="$ctrl.numeroContacto"
                                       required-message="'Error!, Este campo es obligatorio.'"
                                       required placeholder="Nombre del contrato que notificó la incidencia">
                                   </div>
@@ -141,7 +148,7 @@
                               <div class="form-group">
                                   <div class="col-sm-12">
                                       <textarea  type = "text"
-                                      name = "nombre"
+                                      name = "descripcion"
                                       validate-on="dirty"
                                       class = "form-control"
                                       ng-model = "$ctrl.descripcion"
@@ -155,8 +162,8 @@
                   <div class="col-md-12">
                       <div class="tools">
                           <p class="text-right">
-                              <button class="btn btn-raised btn-primary btn-sm" type="button" ng-click="$ctrl.limpiar()"><i class="fa fa-eraser" aria-hidden="true"></i>Limpiar</button>
-                              <button class="btn btn-raised btn-primary btn-sm" type="submit" ng-click="$ctrl.guardar()"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Atención</button>
+                              <button class="btn btn-raised btn-primary btn-sm" type="button" ng-click="myForm.reset()"><i class="fa fa-eraser"></i>Limpiar</button>
+                              <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-floppy-o"></i>Guardar Atención</button>
                           </p>
                       </div>
                   </div>

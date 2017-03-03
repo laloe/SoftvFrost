@@ -27,10 +27,13 @@
                               <th>N De Ticket</th>
                               <th>Prioridad</th>
                               <th>Estado</th>
-                              <th>Siteid</th>
+                              <th>SAN</th>
                               <th>Descripción</th>
                               <th>Usuario Asignado</th>
                               <th>Fecha Registro</th>
+                              <th>Último Usuario</th>
+                              <th>Última Actualización</th>
+                              <th>Fecha Vencimiento</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -45,10 +48,13 @@
                                 <td>{{x.Descripcion}}</td>
                                 <td>{{x.Usuario}}</td>
                                 <td>{{x.Fecha}}</td>
+                                <td>{{}}</td>
+                                <td>{{}}</td>
+                                <td>{{x.FechaCierre}}</td>
                             </tr>
                           </tbody>
                         </table>
-                        <div style="padding-left: 20px;" ng-show="$ctrl.showPaginator">
+                        <div style="padding-left: 20px;">
                             <dir-pagination-controls
                             max-size="8"
                             direction-links="true"

@@ -1,25 +1,30 @@
 <!-- start: Header -->
-  <nav class="navbar navbar-default header navbar-fixed-top">
-    <div class="col-md-12 nav-wrapper">
-      <div class="navbar-header" style="width:100%;">
-        <div class="opener-left-menu is-open">
-          <span class="top"></span>
-          <span class="middle"></span>
-          <span class="bottom"></span>
-        </div>
-          <a href="index.html" class="navbar-brand">
-           <b>SOFTV</b>
-          </a>
 
-        <ul class="nav navbar-nav navbar-right user-nav">
-          <li class="user-name"><span>{{ $ctrl.usuario }}</span></li>
-            <li class="dropdown avatar-dropdown">
-             <img src="libs/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
-             <ul class="dropdown-menu user-dropdown">
-               <li><a href="" ng-click="$ctrl.logOut()"><span class="fa fa-power-off "></span> Salir</a></li>
-            </ul>
-          </li>
-        </ul>
+
+<nav class="navbar navbar-default header navbar-fixed-top">
+  <div class="col-md-12 nav-wrapper">
+    <div class="navbar-header" style="width:100%;">
+      <div class="opener-left-menu is-open">
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
+      </div>
+      <a class="navbar-brand">
+        <b>SOFTV</b>
+      </a>
+
+
+      <ul class="nav navbar-nav navbar-right user-nav">
+        <li class="user-name"><span>{{ $ctrl.usuario }}</span></li>
+        <li class="dropdown avatar-dropdown">
+          <img src="libs/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+          <ul class="dropdown-menu user-dropdown">
+            <li><a href="" ng-click="$ctrl.logOut()"><span class="fa fa-power-off "></span> Salir</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
     </div>
   </div>
 </nav>
@@ -34,17 +39,14 @@
         <li>
           <div class="left-bg"></div>
         </li>
-        <li class="time">
-          <h1 class="animated fadeInLeft">21:00</h1>
-          <p class="animated fadeInRight">Sat,October 1st 2029</p>
-        </li>
-        <li class="active ripple">
-          <a class="tree-toggle nav-header"><span class="fa fa-globe"></span> Provisión
-                  <span class="fa-angle-right fa right-arrow text-right"></span>
-                </a>
-          <ul class="nav nav-list tree">
-            <li><a ui-sref="home.provision.suscriptores" ui-sref-active="active">Suscriptores</a></li>
-            <li><a ui-sref="home.provision.terminales">Terminales</a></li>
+        <li class="ripple" ng-repeat="x in $ctrl.menus | orderBy:'SortOrder'" ui-sref-active="active">
+          <a class="tree-toggle nav-header" ng-click="$ctrl.menuClick($index)"><span class="{{ x.Icon }}"></span> {{ x.Title }}
+             <span class="fa-angle-right fa right-arrow text-right"></span>
+          </a>
+          <ul class="nav nav-list tree test{{$index}}">
+            <li ng-repeat="y in x.MenuChild | orderBy:'SortOrder'">
+                <a ui-sref="{{ y.Class }}" ng-class="{active:$state.includes(y.Class)}">{{ y.Title }}</a>
+            </li>
           </ul>
         </li>
         <li class="ripple">
@@ -62,11 +64,11 @@
   </div>
   <!-- end: Left Menu -->
 
-  <!-- start: content -->
-  <div id="content">
-    <div ui-view></div>
-  </div>
-  <!-- end: content -->
+
+    <div id="content">
+      <div ui-view></div>
+    </div>
+    <!-- end: content -->
 
 </div>
 

@@ -3,26 +3,95 @@ angular.module('softvFrostApp')
 	.factory('nuevoSuscriptorFactory', function($http, $q, $window, globalService, $localStorage) {
 		var factory = {};
 		var paths = {
-			addSuscriptor: '/Suscriptor/AddSuscriptor'
+			addSuscriptor: '/Suscriptor/AddSuscriptor',
+			getEstados: '/Estado/GetEstadoList',
+			getSuscriptor: '/Suscriptor/GetSuscriptor',
+			updateSuscriptor: '/Suscriptor/UpdateSuscriptor'
 		};
-		factory.addSuscriptor = function() {
+
+		factory.getEstados = function() {
+			var deferred = $q.defer();
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token
+				}
+			};
+			$http.get(globalService.getUrl() + paths.getEstados, config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(data) {
+				deferred.reject(data);
+			});
+			return deferred.promise;
+		};
+
+		factory.updateSuscriptor = function(obj) {
 			var deferred = $q.defer();
 			var Parametros = {
-				'Apellido': 'APELLIDO SUSCRIPTOR 2',
-				'CP': '20580',
-				'Calle': 'calle 2',
-				'Ciudad': 'ciudad2',
-				'Colonia': 'colonia 2',
-				'Email': 'email@email.com',
-				'Estado': 1,
-				'FechaAlta': 1,
-				'IdEstado': 1,
-				'IdSuscriptor': 4,
-				'Nombre': 'SUSCRIPTOR 2',
-				'Numero': '25',
-				'Referencia': 'sin ref',
-				'Telefono': '4651258989',
-				'Terminal': 1
+				'objSuscriptor': {
+					'IdSuscriptor': obj.id,
+					'IdEstado': obj.estado,
+					'Nombre': obj.nombre,
+					'Apellido': obj.apellidos,
+					'Telefono': obj.telefono,
+					'Email': obj.email,
+					'CP': obj.cp,
+					'Calle': obj.calle,
+					'Numero': obj.numero,
+					'Colonia': obj.colonia,
+					'Ciudad': obj.ciudad,
+					'Referencia': obj.referencia,
+					'FechaAlta': ''
+				}
+			};
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token
+				}
+			};
+			$http.post(globalService.getUrl() + paths.updateSuscriptor, JSON.stringify(Parametros), config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(data) {
+				deferred.reject(data);
+			});
+			return deferred.promise;
+		};
+
+		factory.getSuscriptor = function(id) {
+			var deferred = $q.defer();
+			var Parametros = {
+				'IdSuscriptor': id
+			};
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token
+				}
+			};
+			$http.post(globalService.getUrl() + paths.getSuscriptor, JSON.stringify(Parametros), config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(data) {
+				deferred.reject(data);
+			});
+			return deferred.promise;
+		};
+
+		factory.addSuscriptor = function(obj) {
+			var deferred = $q.defer();
+			var Parametros = {
+				'objSuscriptor': {
+					'IdEstado': obj.IdEstado,
+					'Nombre': obj.nombre,
+					'Apellido': obj.apellidos,
+					'Telefono': obj.telefono,
+					'Email': obj.email,
+					'CP': obj.cp,
+					'Calle': obj.calle,
+					'Numero': obj.numero,
+					'Colonia': obj.colonia,
+					'Ciudad': obj.ciudad,
+					'Referencia': obj.referencia,
+					'FechaAlta': ''
+				}
+
 			};
 			var config = {
 				headers: {
@@ -30,12 +99,12 @@ angular.module('softvFrostApp')
 				}
 			};
 			$http.post(globalService.getUrl() + paths.addSuscriptor, JSON.stringify(Parametros), config).then(function(response) {
-
+				deferred.resolve(response.data);
 			}).catch(function(data) {
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		return factory;
 	});

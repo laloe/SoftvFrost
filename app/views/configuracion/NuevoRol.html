@@ -1,0 +1,50 @@
+<div class="panel" style="height:100px;">
+  <div class="panel-body" style="margin-top:-20px;">
+    <div class="col-md-6 col-sm-12">
+      <h3 class="animated fadeInLeft">{{$ctrl.titulo}}</h3>
+      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Configuración>roles</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel-heading">
+    <div class="tools">
+      <div class="row">
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <b>Nombre de rol</b>
+            <input type="text" class="form-control" ng-model="$ctrl.Nombre">
+          </div>
+
+          <div class="col-md-12">
+            <b>Descripción de rol</b>
+            <input type="text" class="form-control" ng-model="$ctrl.Descripcion">
+          </div>
+          <br>
+          <div class="col-md-12">
+            <b>status</b>
+            <div class="form-group form-animate-checkbox">
+              <input type="checkbox" ng-model="$ctrl.Estatus" class="checkbox">
+              <label> Activo</label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="panel-footer text-right">
+        <button class="btn btn-success btn-sm" ng-click="$ctrl.GuardarRol();">Guardar</button>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
