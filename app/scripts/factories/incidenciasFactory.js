@@ -18,23 +18,22 @@ angular.module('softvFrostApp')
 		factory.addTicket = function(obj) {
 			var deferred = $q.defer();
 			var Parametros = {
-                "objTicket":
-                    {
-                        "IdUsuario": 1,
-                        "IdTicketPadre": 0,
-                        "SAN": obj.san,
-                        "Fecha": obj.fecha,
-                        "IdSintoma": obj.sintoma,
-                        "IdMotivoTicket": obj.motivo,
-						"Prioridad": obj.prioridad,
-                        "Descripcion": obj.descripcion,
-						"IdTipoContacto":obj.tipoContacto,
-						"NombreContacto": obj.nombreContacto,
-						"IdMedioComunicacion":obj.medioComun,
-						"NumeroContacto": obj.numeroContacto,
-						"FechaCierre": "",
-						"Estado": "P"
-                    }
+				'objTicket': {
+					'IdUsuario': 1,
+					'IdTicketPadre': 0,
+					'SAN': obj.san,
+					'Fecha': obj.fecha,
+					'IdSintoma': obj.sintoma,
+					'IdMotivoTicket': obj.motivo,
+					'Prioridad': obj.prioridad,
+					'Descripcion': obj.descripcion,
+					'IdTipoContacto': obj.tipoContacto,
+					'NombreContacto': obj.nombreContacto,
+					'IdMedioComunicacion': obj.medioComun,
+					'NumeroContacto': obj.numeroContacto,
+					'FechaCierre': '',
+					'Estado': 'P'
+				}
 			};
 			var config = {
 				headers: {
@@ -47,13 +46,10 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
-		factory.getTickets = function(obj) {
+		factory.getTickets = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-
-			};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -65,13 +61,13 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getTerminal = function(san) {
 			var deferred = $q.defer();
 			var Parametros = {
-				  "SAN": san
-				};
+				'SAN': san
+			};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -85,12 +81,10 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getMotivo = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-				};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -102,12 +96,10 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getSintoma = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-				};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -119,12 +111,10 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getTipoContrato = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-				};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -136,12 +126,10 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getMedio = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-				};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -153,30 +141,28 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getTicketDetalle = function(ticket) {
 			var deferred = $q.defer();
 			var Parametros = {
-					"IdTicket":ticket
-				};
+				'IdTicket': ticket
+			};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
 				}
 			};
-			$http.post(globalService.getUrl() + paths.getTicketDetalle, JSON.stringify(Parametros) , config).then(function(response) {
+			$http.post(globalService.getUrl() + paths.getTicketDetalle, JSON.stringify(Parametros), config).then(function(response) {
 				deferred.resolve(response.data);
 			}).catch(function(data) {
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.getSolucion = function() {
 			var deferred = $q.defer();
-			var Parametros = {
-				};
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
@@ -188,18 +174,17 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.closeTicket = function(obj) {
 			var deferred = $q.defer();
 			var Parametros = {
-				"objTicket":
-				{
-					"IdTicket": obj.ticket,
-					"FechaCierre": obj.fechaCierre,
-					"IdSolucion": obj.solucion,
-					"Causa": obj.causa,
-					"DescripcionSolucion": obj.descripcionSolucion
+				'objTicket': {
+					'IdTicket': obj.ticket,
+					'FechaCierre': obj.fechaCierre,
+					'IdSolucion': obj.solucion,
+					'Causa': obj.causa,
+					'DescripcionSolucion': obj.descripcionSolucion
 				}
 			};
 			var config = {
@@ -213,16 +198,16 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
-		}
+		};
 
 		factory.UpdateFile = function(file, Distribuidor) {
 			var deferred = $q.defer();
 			var data = new FormData();
 			for (var i = 0; i < file.length; i++) {
 				console.log(file[i]);
-				data.append("file" + i, file[i]);
+				data.append('file' + i, file[i]);
 			}
-			data.append("Distribuidor", Distribuidor)
+			data.append('Distribuidor', Distribuidor);
 
 			var config = {
 				headers: {
@@ -236,7 +221,7 @@ angular.module('softvFrostApp')
 				deferred.reject(response);
 			});
 			return deferred.promise;
-		}
+		};
 
 		return factory;
 	});

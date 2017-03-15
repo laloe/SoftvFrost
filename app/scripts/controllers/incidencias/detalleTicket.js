@@ -63,6 +63,7 @@ function DetalleTicketCtrl($uibModalInstance, $localStorage, ticket, incidencias
     }
 
 	var vm = this;
+    vm.usuario = $localStorage.currentUser.usuario;
     vm.cancel = cancel
     vm.avanceTicket = avanceTicket;
     vm.closeTicket = closeTicket;

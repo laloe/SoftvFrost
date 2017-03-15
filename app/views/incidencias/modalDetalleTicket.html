@@ -16,26 +16,26 @@
                         <div class="tab-pane active" id="ver">
                             <div class="row" style="margin-top: 30px;">
                                 <div class="col-md-4 col-md-offset-1">
-                                    <p>Cliente:     {{}}</p>
+                                    <h5><strong>Cliente:</strong>     {{}}</h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <p>Terminal:     {{$ctrl.detalleTicket.SAN}}</p>
+                                    <h5><strong>Terminal:</strong>     {{$ctrl.detalleTicket.SAN}}</h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <p>Usuario:     {{$ctrl.detalleTicket.Usuario}}</p>
+                                    <h5><strong>Usuario:</strong>     {{$ctrl.detalleTicket.Usuario}}</h5>
                                 </div>
                             </div>
                             <hr>
                             <div class="row" style="margin-top: 30px;">
                                 <h4 class="text-muted" style="padding-left: 15px;">Detalle</h4>
                                 <div class="col-md-4 col-md-offset-1">
-                                    <p>Síntoma:     {{$ctrl.sintoma}}</p>
+                                    <h5><strong>Síntoma:</strong>     {{$ctrl.sintoma}}</h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <p>Prioridad:     {{$ctrl.detalleTicket.Prioridad}}</p>
+                                    <h5><strong>Prioridad:</strong>     {{$ctrl.detalleTicket.Prioridad}}</h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <p>Fecha de Registro:     {{$ctrl.detalleTicket.Fecha}}</p>
+                                    <h5><strong>Fecha de Registro:</strong>     {{$ctrl.detalleTicket.Fecha}}</h5>
                                 </div>
                                 <div style="padding-top: 30px;">
                                     <h4 class="text-muted" style="padding-left: 15px;">Descripción</h4>
@@ -57,22 +57,26 @@
                                 <p>Usuario: <span style="color:#51AAFA">{{$ctrl.usuario}}</span></p>
                             </div>
                             <div class="col-md-12">
-                                <h5 class="text-muted">Descripción del Avance</h5>
-                                <div class="col-md-12">
-                                    <textarea type = "text"
-                                    name = "avanc"
-                                    validate-on="dirty"
-                                    class = "form-control"
-                                    ng-model = "$ctrl.avance"
-                                    required-message="'Error!, Este campo es obligatorio.'"
-                                    required></textarea>
+                                <div class="row">
+                                    <h5 class="text-muted">Descripción del Avance</h5>
+                                    <div class="col-md-12">
+                                        <textarea type = "text"
+                                        name = "avanc"
+                                        validate-on="dirty"
+                                        class = "form-control"
+                                        ng-model = "$ctrl.avance"
+                                        required-message="'Error!, Este campo es obligatorio.'"
+                                        required></textarea>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-plus-circle"></i>  Agregar Avance</button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                        <!-- <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button> -->
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-plus-circle"></i>  Agregar Avance</button>
+                                    </div>
                                 </div>
                                 <br><br>
                                 <div class="row">
@@ -157,7 +161,7 @@
                                     <!-- <input type="file" name="files">
                                     <button type="button" ng-click="$ctrl.ValidaArchivo()">Enviar</button> -->
                                     <input type="file" id="inputFile2" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                    <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button>
+                                    <!-- <button class="btn btn-warning btn-xs" ng-click="$ctrl.ValidaArchivo();">Abrir</button> -->
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <button class="btn btn-raised btn-primary btn-sm" type="submit"><i class="fa fa-minus-circle"></i>  Cerrar Avance</button>

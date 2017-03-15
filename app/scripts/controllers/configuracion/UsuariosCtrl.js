@@ -1,22 +1,32 @@
 'use strict';
 angular.module('softvFrostApp').controller('UsuariosCtrl', UsuariosCtrl);
 
-function UsuariosCtrl(usuarioFactory, $state) {
+function UsuariosCtrl(usuarioFactory, $state, ngNotify) {
 
-  function Init() {
-    usuarioFactory.getUsuarioList().then(function(data) {
-      vm.Usuarios = data.GetUsuarioListResult;
-    });
-  }
+	function Init() {
+		usuarioFactory.getUsuarioList().then(function(data) {
+			vm.Usuarios = data.GetUsuarioListResult;
+		});
+	}
 
-  function EditaUsuario(x) {
+	function EditaUsuario(x) {
 
-    $state.go('home.provision.editausuario', {
-      obj: x
-    });
-  }
+		$state.go('home.provision.editausuario', {
+			obj: x
+		});
+	}
 
-  var vm = this;
-  Init();
-  vm.EditaUsuario = EditaUsuario;
+	function BuscaUsuario() {
+		if (vm.Busuario == null) {
+			ngNotify.set('El campo busqueda esta vacio', 'error');
+			return;
+		}
+		usuarioFactory.BuscaUsuario(vm.Busuario).then(function(data) {
+			vm.Usuarios = data.GetUsuario2ListResult;
+		});
+	}
+
+	var vm = this;
+	Init();
+	vm.EditaUsuario = EditaUsuario;
 }

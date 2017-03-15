@@ -59,6 +59,7 @@ angular.module('softvFrostApp', [
 		if ($localStorage.currentUser) {
 			$location.path('/home');
 			var permissions = permissionsFactory.on();
+			console.log(permissions);
 			PermPermissionStore.definePermission('anonymous', function() {
 				return false;
 			});

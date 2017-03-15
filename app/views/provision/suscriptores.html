@@ -58,8 +58,8 @@
           <td>
             <button class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalle de suscriptor" ng-click="$ctrl.DetalleSuscriptor(x);"><i class="fa fa-search" aria-hidden="true"></i></button>
             <button class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar suscriptor" permission permission-only="'suscriptoresUpdate'" ui-sref="home.provision.suscriptoresEditar({id:x.IdSuscriptor})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Eliminar suscriptor" permission permission-only="'suscriptoresDelete'"><i class="fa fa-trash" aria-hidden="true"></i></button>
-            <button class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Terminales" ng-click="$ctrl.DetalleTerminales(x);"><i class="fa fa-laptop" aria-hidden="true"></i></button>
+            <!-- <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Eliminar suscriptor" permission permission-only="'suscriptoresDelete'"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
+            <a class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Terminales" href="/#!/home/provision/terminales?idSuscriptor={{ x.IdSuscriptor }}"><i class="fa fa-laptop" aria-hidden="true"></i></a>
             <button class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos" ng-click="$ctrl.DetalleMovimientos();"><i class="fa fa-exchange" aria-hidden="true"></i></button>
           </td>
         </tr>
