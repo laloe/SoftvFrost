@@ -1,50 +1,41 @@
-<div class="panel" style="height:100px;">
-  <div class="panel-body" style="margin-top:-20px;">
-    <div class="col-md-6 col-sm-12">
-      <h3 class="animated fadeInLeft">{{$ctrl.titulo}}</h3>
-      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Configuración>roles</p>
-    </div>
-  </div>
-</div>
-<div class="col-md-12">
-  <div class="panel-heading">
-    <div class="tools">
-      <div class="row">
+<form angular-validator-submit="$ctrl.GuardarRol();" name="myForm" class="form-horizontal" novalidate angular-validator>
+  <div class="card" style="margin-top:10px;">
+    <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+      <header>
+        <strong style="font-weight:bold; border:none; margin-left:10px;">{{$ctrl.titulo}}</strong>
+        <br /><small class="text-muted" style="font-size:14px; margin-left:10px;"> <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>><a href="#" class="paginaActiva">Configuración</a></small>
+
+      </header>
+      <div class="tools">
+
+        <!-- <button type="button" class="btn pull-right btn-raised btn-success btn-sm" ng-click="$ctrl.Guardar()" permission permission-only="'permisosAdd'">Guardar</button> -->
+        <button class="btn btn-success btn-sm" type="submit" permission permission-only="'rolesAdd'">Guardar</button>
+        <button type="button" class="btn btn-raised btn-default btn-sm" ui-sref="home.provision.roles"> Cancelar</button>
 
       </div>
     </div>
-
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-12">
-            <b>Nombre de rol</b>
-            <input type="text" class="form-control" ng-model="$ctrl.Nombre">
-          </div>
-
-          <div class="col-md-12">
-            <b>Descripción de rol</b>
-            <input type="text" class="form-control" ng-model="$ctrl.Descripcion">
-          </div>
-          <br>
-          <div class="col-md-12">
-            <b>status</b>
-            <div class="form-group form-animate-checkbox">
-              <input type="checkbox" ng-model="$ctrl.Estatus" class="checkbox">
-              <label> Activo</label>
-            </div>
-          </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <b>Nombre de rol</b>
+          <input type="text" class="form-control col-md-4" ng-model="$ctrl.Nombre" name="Nombre" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Descripción de rol</b>
+          <input type="text" class="form-control col-md-4" ng-model="$ctrl.Descripcion" name="Descripcion" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Status</b>
+          <div><label class="checkbox-inline checkbox-styled checkbox-info"><input type="checkbox" ng-model="$ctrl.Estatus"><span> Activo</span></label></div>
 
         </div>
       </div>
-      <div class="panel-footer text-right">
-        <button class="btn btn-success btn-sm" ng-click="$ctrl.GuardarRol();">Guardar</button>
-
-      </div>
     </div>
-
-
-
-
+  </div>
 
   </div>
+</form>

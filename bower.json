@@ -15,7 +15,8 @@
     "ngmap": "^1.17.8",
     "angular-bootstrap": "^2.5.0",
     "angular-block-ui": "^0.2.2",
-    "angular-permission": "^5.2.1"
+    "angular-permission": "^5.2.1",
+    "angular-ui-mask": "^1.8.7"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

@@ -1,6 +1,5 @@
 'use strict';
-
-function EditarSuscriptorCtrl(nuevoSuscriptorFactory, ngNotify, $state, $stateParams) {
+angular.module('softvFrostApp').controller('EditarSuscriptorCtrl', function(nuevoSuscriptorFactory, ngNotify, $state, $stateParams) {
 	this.$onInit = function() {
 		nuevoSuscriptorFactory.getSuscriptor($stateParams.id).then(function(data) {
 			vm.suscriptor = data.GetSuscriptorResult;
@@ -14,7 +13,7 @@ function EditarSuscriptorCtrl(nuevoSuscriptorFactory, ngNotify, $state, $statePa
 			});
 
 			if (vm.suscriptor.Telefono) {
-				vm.telefono = parseInt(vm.suscriptor.Telefono);
+				vm.suscriptor.Telefono = parseInt(vm.suscriptor.Telefono);
 			}
 		});
 	}
@@ -42,5 +41,4 @@ function EditarSuscriptorCtrl(nuevoSuscriptorFactory, ngNotify, $state, $statePa
 
 	var vm = this;
 	vm.guardar = guardar;
-}
-angular.module('softvFrostApp').controller('EditarSuscriptorCtrl', EditarSuscriptorCtrl);
+});

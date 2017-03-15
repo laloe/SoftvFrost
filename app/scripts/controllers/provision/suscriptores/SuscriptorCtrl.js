@@ -87,14 +87,15 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 				'Op': 2
 			};
 		}
-		if (vm.tipoBusqueda == 0) {
+		if (vm.tipoBusqueda == undefined || vm.tipoBusqueda == 0) {
 			SuscriptorFactory.getSuscriptorList().then(function(data) {
 				vm.suscriptores = data.GetSuscriptorListResult;
+				$('.buscarSuscriptor').collapse('hide');
 			});
 		} else {
 			SuscriptorFactory.buscarSuscriptor(vm.busObj).then(function(data) {
-				console.log(data);
 				vm.suscriptores = data.GetFilterSuscriptorListResult;
+				$('.buscarSuscriptor').collapse('hide');
 			});
 		}
 	}

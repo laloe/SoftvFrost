@@ -1,211 +1,108 @@
-<!-- start: Header -->
-
-
-<nav class="navbar navbar-default header navbar-fixed-top">
-  <div class="col-md-12 nav-wrapper">
-    <div class="navbar-header" style="width:100%;">
-      <div class="opener-left-menu is-open">
-        <span class="top"></span>
-        <span class="middle"></span>
-        <span class="bottom"></span>
-      </div>
-      <a class="navbar-brand">
-        <b>SOFTV</b>
-      </a>
-
-
-      <ul class="nav navbar-nav navbar-right user-nav">
-        <li class="user-name"><span>{{ $ctrl.usuario }}</span></li>
-        <li class="dropdown avatar-dropdown">
-          <img src="libs/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
-          <ul class="dropdown-menu user-dropdown">
-            <li><a href="" ng-click="$ctrl.logOut()"><span class="fa fa-power-off "></span> Salir</a></li>
-          </ul>
+<header id="header">
+  <div class="headerbar">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="headerbar-left">
+      <ul class="header-nav header-nav-options">
+        <li class="header-nav-brand">
+          <div class="brand-holder">
+            <a ui-sref="home.dashboard">
+              <img src="images/logo.png"><span class="text-lg text-bold text-primary">SOFTVFROST</span>
+            </a>
+          </div>
         </li>
-      </ul>
-
-
-    </div>
-  </div>
-</nav>
-<!-- end: Header -->
-
-<div class="container-fluid mimin-wrapper">
-
-  <!-- start:Left Menu -->
-  <div id="left-menu">
-    <div class="sub-left-menu scroll">
-      <ul class="nav nav-list">
         <li>
-          <div class="left-bg"></div>
-        </li>
-        <li class="ripple" ng-repeat="x in $ctrl.menus | orderBy:'SortOrder'" ui-sref-active="active">
-          <a class="tree-toggle nav-header" ng-click="$ctrl.menuClick($index)"><span class="{{ x.Icon }}"></span> {{ x.Title }}
-             <span class="fa-angle-right fa right-arrow text-right"></span>
+          <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+            <i class="fa fa-bars"></i>
           </a>
-          <ul class="nav nav-list tree test{{$index}}">
-            <li ng-repeat="y in x.MenuChild | orderBy:'SortOrder'">
-                <a ui-sref="{{ y.Class }}" ng-class="{active:$state.includes(y.Class)}">{{ y.Title }}</a>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
-  </div>
-  <!-- end: Left Menu -->
-
-
-    <div id="content">
-      <div ui-view></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="headerbar-right">
+      <ul class="header-nav header-nav-profile">
+        <li class="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+            <img src="images/ninja.png" alt="" />
+            <span class="profile-info">{{ $ctrl.usuario }} <small>{{ $ctrl.rol }}</small></span>
+          </a>
+          <ul class="dropdown-menu animation-dock">
+            <li><a href="" ng-click="$ctrl.logOut()"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+          </ul>
+          <!--end .dropdown-menu -->
+        </li>
+        <!--end .dropdown -->
+      </ul>
+      <!--end .header-nav-profile -->
     </div>
-    <!-- end: content -->
+    <!--end #header-navbar-collapse -->
+  </div>
+</header>
+<!-- END HEADER-->
 
-</div>
+<!-- BEGIN BASE-->
+<div id="base">
+  <div id="content">
+    <section>
+      <div ui-view></div>
+    </section>
+  </div>
+  <!--end #content-->
+  <!-- END CONTENT -->
+  <!-- BEGIN MENUBAR-->
+  <div id="menubar" class="menubar-inverse">
+    <div class="menubar-fixed-panel">
+      <div>
+        <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+    <div class="menubar-scroll-panel">
+      <ul id="main-menu" class="gui-controls">
+        <li class="gui-folder" ng-repeat="x in $ctrl.menus | orderBy:'SortOrder'" ui-sref-active="active">
+          <a ui-sref="{{ x.Class }}" ng-if="x.MenuChild.length == 0">
+            <div class="gui-icon"><i class="{{ x.Icon }}"></i></div>
+            <span class="title">{{ x.Title }}</span>
+          </a>
+          <a ng-if="x.MenuChild.length > 0">
+            <div class="gui-icon"><i class="{{ x.Icon }}"></i></div>
+            <span class="title">{{ x.Title }}</span>
+          </a>
+          <!--start submenu -->
+          <ul style="overflow: hidden; height: 308px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;" ng-if="x.MenuChild.length > 0">
+            <li ng-repeat="y in x.MenuChild | orderBy:'SortOrder'" ng-class="{'gui-folder': y.MenuChild.length > 0}">
+              <a ui-sref="{{ y.Class }}" ng-class="{active:$state.includes(y.Class)}" ng-if="y.MenuChild.length == 0"><span class="title">{{ y.Title }}</span></a>
+              <a ng-class="{active:$state.includes(y.Class)}" ng-if="y.MenuChild.length > 0"><span class="title">{{ y.Title }}</span></a>
 
-<!-- start: Mobile -->
-<div id="mimin-mobile" class="reverse">
-  <div class="mimin-mobile-menu-list">
-    <div class="col-md-12 sub-mimin-mobile-menu-list animated fadeInLeft">
-      <ul class="nav nav-list">
-        <li class="active ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa-home fa"></span>Dashboard
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="dashboard-v1.html">Dashboard v.1</a></li>
-            <li><a href="dashboard-v2.html">Dashboard v.2</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa-diamond fa"></span>Layout
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="topnav.html">Top Navigation</a></li>
-            <li><a href="boxed.html">Boxed</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa-area-chart fa"></span>Charts
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="chartjs.html">ChartJs</a></li>
-            <li><a href="morris.html">Morris</a></li>
-            <li><a href="flot.html">Flot</a></li>
-            <li><a href="sparkline.html">SparkLine</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa fa-pencil-square"></span>Ui Elements
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="color.html">Color</a></li>
-            <li><a href="weather.html">Weather</a></li>
-            <li><a href="typography.html">Typography</a></li>
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="buttons.html">Buttons</a></li>
-            <li><a href="media.html">Media</a></li>
-            <li><a href="panels.html">Panels & Tabs</a></li>
-            <li><a href="notifications.html">Notifications & Tooltip</a></li>
-            <li><a href="badges.html">Badges & Label</a></li>
-            <li><a href="progress.html">Progress</a></li>
-            <li><a href="sliders.html">Sliders</a></li>
-            <li><a href="timeline.html">Timeline</a></li>
-            <li><a href="modal.html">Modals</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa fa-check-square-o"></span>Forms
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="formelement.html">Form Element</a></li>
-            <li><a href="#">Wizard</a></li>
-            <li><a href="#">File Upload</a></li>
-            <li><a href="#">Text Editor</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa fa-table"></span>Tables
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="datatables.html">Data Tables</a></li>
-            <li><a href="handsontable.html">handsontable</a></li>
-            <li><a href="tablestatic.html">Static</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a href="calendar.html">
-            <span class="fa fa-calendar-o"></span>Calendar
-          </a>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa fa-envelope-o"></span>Mail
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="mail-box.html">Inbox</a></li>
-            <li><a href="compose-mail.html">Compose Mail</a></li>
-            <li><a href="view-mail.html">View Mail</a></li>
-          </ul>
-        </li>
-        <li class="ripple">
-          <a class="tree-toggle nav-header">
-            <span class="fa fa-file-code-o"></span>Pages
-            <span class="fa-angle-right fa right-arrow text-right"></span>
-          </a>
-          <ul class="nav nav-list tree">
-            <li><a href="forgotpass.html">Forgot Password</a></li>
-            <li><a href="login.html">SignIn</a></li>
-            <li><a href="reg.html">SignUp</a></li>
-            <li><a href="article-v1.html">Article v1</a></li>
-            <li><a href="search-v1.html">Search Result v1</a></li>
-            <li><a href="productgrid.html">Product Grid</a></li>
-            <li><a href="profile-v1.html">Profile v1</a></li>
-            <li><a href="invoice-v1.html">Invoice v1</a></li>
-          </ul>
-        </li>
-        <li class="ripple"><a class="tree-toggle nav-header"><span class="fa "></span> MultiLevel  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-          <ul class="nav nav-list tree">
-            <li><a href="view-mail.html">Level 1</a></li>
-            <li><a href="view-mail.html">Level 1</a></li>
-            <li class="ripple">
-              <a class="sub-tree-toggle nav-header">
-                <span class="fa fa-envelope-o"></span> Level 1
-                <span class="fa-angle-right fa right-arrow text-right"></span>
-              </a>
-              <ul class="nav nav-list sub-tree">
-                <li><a href="mail-box.html">Level 2</a></li>
-                <li><a href="compose-mail.html">Level 2</a></li>
-                <li><a href="view-mail.html">Level 2</a></li>
+              <ul style="overflow: hidden; height: 308px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;" ng-if="y.MenuChild.length > 0">
+                <li ng-repeat="z in y.MenuChild">
+                  <a ui-sref="{{ z.Class }}" ng-class="{active:$state.includes(z.Class)}"><span class="title">{{ z.Title }}</span></a>
+                </li>
               </ul>
             </li>
           </ul>
+          <!--end /submenu -->
         </li>
-        <li><a href="credits.html">Credits</a></li>
       </ul>
-    </div>
-  </div>
-</div>
-<button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-danger">
-  <span class="fa fa-bars"></span>
-</button>
 
-<script src="libs/js/plugins/moment.min.js"></script>
-<script src="libs/js/plugins/fullcalendar.min.js"></script>
-<script src="libs/js/plugins/jquery.nicescroll.js"></script>
-<script src="libs/js/plugins/jquery.vmap.min.js"></script>
-<script src="libs/js/plugins/maps/jquery.vmap.world.js"></script>
-<script src="libs/js/plugins/jquery.vmap.sampledata.js"></script>
-<script src="libs/js/plugins/chart.min.js"></script>
-<script src="libs/js/main.js"></script>
+      <div class="menubar-foot-panel">
+        <small class="no-linebreak hidden-folded">
+          <span class="opacity-75">Copyright &copy; 2017</span> <strong>SOFTV</strong>
+        </small>
+      </div>
+    </div>
+    <!--end .menubar-scroll-panel-->
+  </div>
+  <!--end #menubar-->
+  <!-- END MENUBAR -->
+</div>
+<!--end #base-->
+
+<script src="libs/core/source/App.js"></script>
+<script src="libs/core/source/AppNavigation.js"></script>
+<script src="libs/core/source/AppOffcanvas.js"></script>
+<script src="libs/core/source/AppCard.js"></script>
+<script src="libs/core/source/AppForm.js"></script>
+<script src="libs/core/source/AppNavSearch.js"></script>
+<script src="libs/core/source/AppVendor.js"></script>
+<script src="libs/core/demo/Demo.js"></script>

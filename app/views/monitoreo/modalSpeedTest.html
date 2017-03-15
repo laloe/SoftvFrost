@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <small class="text-muted" style="font-size:12px; margin-left:10px;">Speed Test Results For SAN - DSS34093259</small>
+    <button class="close" aria-label="Close" type="button" ng-click="$ctrl.cancel()">×</button>
+</div>
+<div class="modal-body" style="padding-top:20px;">
+    <div>
+        <ul>
+            <li>Execution time: {{$ctrl.test['Execution time']}}</li>
+            <li>Upload speed (kb/sec): {{$ctrl.test['Upload speed (kb/sec)']}}</li>
+            <li>Download spees (kb/sec): {{$ctrl.test['Download speed (kb/sec)']}}</li>
+            <li>Round trip ping time (msec): {{$ctrl.test['Round trip ping time (msec)']}}</li>
+            <li>Packet loss rate (%): {{$ctrl.test['Packet loss rate (%)']}}</li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

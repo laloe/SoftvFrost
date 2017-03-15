@@ -1,71 +1,86 @@
-<div class="panel" style="height:100px;">
-  <div class="panel-body" style="margin-top:-20px;">
-    <div class="col-md-6 col-sm-12">
-      <h3 class="animated fadeInLeft">Suscriptores</h3>
-      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Suscriptores</p>
-    </div>
-  </div>
-</div>
-<div class="col-md-12">
-  <div class="panel-heading">
-    <div class="tools">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="panel-body">
-            <label class="control-label text-left">San</label>
-            <input type="text" class="form-control" ng-change="$ctrl.cambiarBusqueda(1)" ng-model="$ctrl.bsan">
+<div class="card" style="margin-top:20px;">
+	<div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+		<header>
+			<strong style="font-weight:bold; border:none; margin-left:10px;">Suscriptores</strong>
+			<br /><small class="text-muted" style="font-size:14px; margin-left:10px;"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Suscriptores</small>
+		</header>
+        <div class="tools">
+			<div class="btn-group">
+                <button type="button" class="btn pull-right btn-raised btn-success btn-sm"  permission permission-only="'suscriptoresAdd'" ui-sref="home.provision.suscriptoresNuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+			</div>
+		</div>
+	</div>
+	<div class="section-body">
+        <div class="col-md-12">
+          <div class="panel-heading">
+            <div class="tools">
+                <div class="panel-group" id="suscriptor">
+                  <div class="card panel">
+                    <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#suscriptor" data-target="#suscriptor-1" aria-expanded="false">
+                      <header>Buscar Suscriptor</header>
+                      <div class="tools">
+                        <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+                      </div>
+                    </div>
+                    <div id="suscriptor-1" class="collapse buscarSuscriptor" aria-expanded="false" style="height: 0px;">
+                      <div class="panel-body">
+                          <div class="row">
+                              <div class="col-md-2" style="margin-top:-30px;">
+                                <div class="panel-body">
+                                  <input type="text" placeholder="SAN" class="form-control" ng-change="$ctrl.cambiarBusqueda(1)" ng-model="$ctrl.bsan">
+                                </div>
+                              </div>
+                              <div class="col-md-4" style="margin-top:-30px;">
+                                <div class="panel-body">
+                                  <input type="text" placeholder="Nombre" class="form-control" ng-change="$ctrl.cambiarBusqueda(2)" ng-model="$ctrl.bnombre">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <p class="text-right">
+                                      <button type="button" class="btn btn-raised btn-primary btn-sm" ng-click="$ctrl.buscar()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- panel body -->
+                    </div>
+                  </div>
+                  <!--end .panel -->
+                </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel-body">
-            <label class="control-label text-left">Nombre</label>
-            <input type="text" class="form-control" ng-change="$ctrl.cambiarBusqueda(2)" ng-model="$ctrl.bnombre">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="panel-body" style="margin-top:25px;">
-              <button type="button" class="btn btn-raised btn-primary" ng-click="$ctrl.buscar()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel-body" style="margin-top:25px;">
-              <button type="button" class="btn pull-right btn-raised btn-success"  permission permission-only="'suscriptoresAdd'" ui-sref="home.provision.suscriptoresNuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel form-element-padding">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Suscriptor</th>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Telefono</th>
-          <th>Ciudad</th>
-          <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
+          <div class="panel form-element-padding" style="margin-top:-20px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Suscriptor</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Ciudad</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
 
-        <tr dir-paginate="x in $ctrl.suscriptores|itemsPerPage:8">
-          <td>{{x.IdSuscriptor}}</td>
-          <td>{{x.Nombre}} {{x.Apellido}}</td>
-          <td>{{x.Email}} </td>
-          <td>{{x.Telefono}}</td>
-          <td>{{x.Ciudad}}</td>
-          <td>
-            <button class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalle de suscriptor" ng-click="$ctrl.DetalleSuscriptor(x);"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <button class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar suscriptor" permission permission-only="'suscriptoresUpdate'" ui-sref="home.provision.suscriptoresEditar({id:x.IdSuscriptor})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <!-- <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Eliminar suscriptor" permission permission-only="'suscriptoresDelete'"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
-            <a class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Terminales" href="/#!/home/provision/terminales?idSuscriptor={{ x.IdSuscriptor }}"><i class="fa fa-laptop" aria-hidden="true"></i></a>
-            <button class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos" ng-click="$ctrl.DetalleMovimientos();"><i class="fa fa-exchange" aria-hidden="true"></i></button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
-    </dir-pagination-controls>
-  </div>
+                <tr dir-paginate="x in $ctrl.suscriptores|itemsPerPage:8">
+                  <td>{{x.IdSuscriptor}}</td>
+                  <td>{{x.Nombre}} {{x.Apellido}}</td>
+                  <td>{{x.Email}} </td>
+                  <td>{{x.Telefono}}</td>
+                  <td>{{x.Ciudad}}</td>
+                  <td>
+                    <button class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalle de suscriptor" ng-click="$ctrl.DetalleSuscriptor(x);"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar suscriptor" permission permission-only="'suscriptoresUpdate'" ui-sref="home.provision.suscriptoresEditar({id:x.IdSuscriptor})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <!-- <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Eliminar suscriptor" permission permission-only="'suscriptoresDelete'"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
+                    <a class="btn i btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Terminales" href="/#!/home/provision/terminales?idSuscriptor={{ x.IdSuscriptor }}"><i class="fa fa-laptop" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+          </div>
+        </div>
+    </div>
 </div>

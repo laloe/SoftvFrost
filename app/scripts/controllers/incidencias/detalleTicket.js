@@ -1,31 +1,31 @@
 'use strict';
 
 function DetalleTicketCtrl($uibModalInstance, $localStorage, ticket, incidenciasFactory, $filter, ngNotify, $state) {
-    function initial() {
-        vm.fecha = new Date();
-        vm.showFirstTab = function(){
-            angular.element('[data-target="#tab1"]').tab('show');
-        }
-        incidenciasFactory.getTicketDetalle(ticket).then(function(data) {
+	function initial() {
+		vm.fecha = new Date();
+		vm.showFirstTab = function() {
+			angular.element('[data-target="#tab1"]').tab('show');
+		}
+		incidenciasFactory.getTicketDetalle(ticket).then(function(data) {
 			vm.detalleTicket = data.GetDeepTicketResult;
-            incidenciasFactory.getSintoma().then(function(data) {
-    			vm.sintomas = data.GetSintomaListResult;
-                // for (var i = 0; i < vm.sintomas.length; i++) {
-                //     if (vm.sintomas[i].IdSintoma == vm.detalleTicket.IdSintoma) {
-                //         vm.sintoma = vm.sintomas[i].Descripcion;
-                //     }
-                // }
-                vm.sintomas.forEach(function(entry, index) {
-                    if (entry.IdSintoma == vm.detalleTicket.IdSintoma) {
-                        vm.sintoma = vm.sintomas[index].Descripcion;
-                    }
-                });
-    		});
+			incidenciasFactory.getSintoma().then(function(data) {
+				vm.sintomas = data.GetSintomaListResult;
+				// for (var i = 0; i < vm.sintomas.length; i++) {
+				//     if (vm.sintomas[i].IdSintoma == vm.detalleTicket.IdSintoma) {
+				//         vm.sintoma = vm.sintomas[i].Descripcion;
+				//     }
+				// }
+				vm.sintomas.forEach(function(entry, index) {
+					if (entry.IdSintoma == vm.detalleTicket.IdSintoma) {
+						vm.sintoma = vm.sintomas[index].Descripcion;
+					}
+				});
+			});
 		});
-        incidenciasFactory.getSolucion().then(function(data) {
+		incidenciasFactory.getSolucion().then(function(data) {
 			vm.solucion = data.GetSolucionTicketListResult;
 		});
-    }
+	}
 
     function ValidaArchivo() {
 		var files = $("#inputFile2").get(0).files;
@@ -34,12 +34,12 @@ function DetalleTicketCtrl($uibModalInstance, $localStorage, ticket, incidencias
 		});
 	}
 
-    function avanceTicket() {
-        console.log('avance');
-    }
+	function avanceTicket() {
+		console.log('avance');
+	}
 
-    function closeTicket() {
-        vm.fechaCierre = new Date();
+	function closeTicket() {
+		vm.fechaCierre = new Date();
 		vm.auxFecha = $filter('date')(vm.fechaCierre, 'yyyy/MM/dd HH:mm:ss');
 		var closeTi = {
 			ticket: ticket,
@@ -56,14 +56,13 @@ function DetalleTicketCtrl($uibModalInstance, $localStorage, ticket, incidencias
 				ngNotify.set('Error al cerrar Ticket.', 'error');
 			}
 		});
-    }
+	}
 
-    function cancel() {
-        $uibModalInstance.dismiss('cancel');
-    }
+	function cancel() {
+		$uibModalInstance.dismiss('cancel');
+	}
 
 	var vm = this;
-    vm.usuario = $localStorage.currentUser.usuario;
     vm.cancel = cancel
     vm.avanceTicket = avanceTicket;
     vm.closeTicket = closeTicket;

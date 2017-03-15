@@ -8,7 +8,7 @@
  * Controller of the softvFrostApp
  */
 angular.module('softvFrostApp')
-	.controller('MainCtrl', function($localStorage, $window, $location) {
+	.controller('MainCtrl', function($localStorage, $window, $location, rolFactory) {
 		this.awesomeThings = [
 			'HTML5 Boilerplate',
 			'AngularJS',
@@ -18,7 +18,13 @@ angular.module('softvFrostApp')
 			if ($localStorage.currentUser) {
 				vm.menus = $localStorage.currentUser.menu;
 				vm.usuario = $localStorage.currentUser.usuario;
-				//$location.path('/home/provision/suscriptores');
+				rolFactory.GetRoleList().then(function(data) {
+					data.GetRoleListResult.forEach(function(item) {
+						if (item.IdRol === $localStorage.currentUser.idRol) {
+							vm.rol = item.Nombre;
+						}
+					});
+				});
 			} else {
 				$location.path('/auth/login');
 			}

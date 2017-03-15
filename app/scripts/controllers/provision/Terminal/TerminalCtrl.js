@@ -6,7 +6,6 @@ function TerminalCtrl(terminalFactory, $uibModal, $state, SuscriptorFactory, nue
 		if ($stateParams.idSuscriptor != undefined) {
 			SuscriptorFactory.getTerminals($stateParams.idSuscriptor).then(function(data) {
 				vm.terminales = data.GetDeepIdSuscriptorResult;
-				console.log(vm.terminales);
 			});
 		} else {
 			terminalFactory.getTerminalList().then(function(data) {

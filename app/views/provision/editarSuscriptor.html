@@ -1,95 +1,90 @@
-<div class="panel" style="height:100px;">
-  <div class="panel-body" style="margin-top:-20px;">
-    <div class="col-md-6 col-sm-12">
-      <h3 class="animated fadeInLeft">Editar Suscriptor</h3>
-      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Editar Suscriptor</p>
+<form angular-validator-submit="$ctrl.guardar()" name="myForm" class="form-horizontal" novalidate angular-validator>
+  <div class="card" style="margin-top:20px;">
+    <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+      <header>
+        <strong style="font-weight:bold; border:none; margin-left:10px;">Editar Suscriptor</strong>
+        <br /><small class="text-muted" style="font-size:14px; margin-left:10px;"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Editar Suscriptor</small>
+      </header>
+      <div class="tools">
+          <button class="btn btn-raised btn-default btn-sm" type="button" ui-sref="home.provision.suscriptores">Cancelar</button>
+          <button class="btn btn-raised btn-success btn-sm" type="submit">Guardar </button>
+      </div>
+    </div>
+    <div class="section-body">
+        <div class="panel form-element-padding">
+          <div class="panel-body" style="padding-bottom:30px;">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-10">
+                          <b>Nombre</b>
+                          <input type="text" name="nombre" validate-on="dirty" class="form-control" ng-model="$ctrl.suscriptor.Nombre" required-message="'Este campo es obligatorio.'" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-10">
+                          <b>Apellidos</b>
+                          <input type="text" class="form-control" name="apellidos" validate-on="dirty" class="form-control" ng-model="$ctrl.suscriptor.Apellido" required-message="'Este campo es obligatorio.'" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                            <b>Teléfono</b>
+                            <input type="text" ui-mask="(999) 999-9999" minlength="10" name="telefono"  validate-on="dirty" invalid-message="'Formato de teléfono no valido.'" ui-mask-placeholder ui-mask-placeholder-char="_" ng-model="$ctrl.suscriptor.Telefono" class="form-control mask-phone_us">
+                        </div>
+                        <div class="col-md-5">
+                            <b>Email</b>
+                            <input type="email" ng-model="$ctrl.suscriptor.Email" validate-on="dirty" name="email" invalid-message="'Formato de correo no valido.'" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-10">
+                          <b>Referencia</b>
+                          <textarea ng-model="$ctrl.suscriptor.Referencia" class="form-control"> </textarea>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <b>Estado</b>
+                          <select validate-on="dirty" name="estado" class="form-control" ng-model="$ctrl.estado" ng-options="v.Nombre for v in $ctrl.estados track by v.IdEstado" required-message="'Este campo es obligatorio.'" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-8">
+                            <b>Ciudad</b>
+                            <input type="text" class="form-control" validate-on="dirty" name="ciudad" class="form-control" ng-model="$ctrl.suscriptor.Ciudad" required-message="'Este campo es obligatorio.'" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <b>Colonia</b>
+                          <input type="text" class="form-control" validate-on="dirty" name="colonia" class="form-control" ng-model="$ctrl.suscriptor.Colonia" required-message="'Este campo es obligatorio.'" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-8">
+                            <b>Calle</b>
+                            <input type="text" class="form-control" validate-on="dirty" name="calle" class="form-control" ng-model="$ctrl.suscriptor.Calle" required-message="'Este campo es obligatorio.'" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <b>Número</b>
+                          <input type="text" class="form-control" validate-on="dirty" class="form-control" name="numero" ng-model="$ctrl.suscriptor.Numero" required-message="'Este campo es obligatorio.'" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-5">
+                            <b>CP</b>
+                            <input type="text" ng-model="$ctrl.suscriptor.CP" validate-on="dirty" name="cp" required-message="'Este campo es obligatorio.'" class="form-control" required>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
     </div>
   </div>
-</div>
-<div class="col-md-12">
-  <div class="panel form-element-padding">
-    <form angular-validator-submit="$ctrl.guardar()" name="myForm" class="form-horizontal" novalidate angular-validator>
-      <div class="panel-heading">
-          <p class="text-right">
-              <button class="btn btn-raised btn-default btn-sm" type="button" ui-sref="home.provision.suscriptores">Cancelar</button>
-              <button class="btn btn-raised btn-success btn-sm" type="submit">Guardar </button>
-          </p>
-        <div class="tools" style="margin-top:-30px;">
-          <p class="text-left">Editar Suscriptor
-          </p>
-        </div>
-      </div>
-      <div class="panel-body" style="padding-bottom:30px;">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Nombre</label>
-              <div class="col-sm-6">
-                <input type="text" name="nombre" validate-on="dirty" class="form-control" ng-model="$ctrl.suscriptor.Nombre" required-message="'Error!, Este campo es obligatorio.'" required>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Apellidos</label>
-              <div class="col-sm-6"><input type="text" class="form-control" name="apellidos" validate-on="dirty" class="form-control" ng-model="$ctrl.suscriptor.Apellido" required-message="'Error!, Este campo es obligatorio.'" required></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Teléfono</label>
-              <div class="col-sm-3"><input type="number" ng-model="$ctrl.telefono" class="form-control mask-phone_us"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Email</label>
-              <div class="col-sm-4"><input type="email" ng-model="$ctrl.suscriptor.Email" validate-on="dirty" name="email" invalid-message="'Formato de correo no valido.'" class="form-control"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Estado</label>
-              <div class="col-sm-4"><select validate-on="dirty" name="estado" class="form-control" ng-model="$ctrl.estado" ng-options="v.Nombre for v in $ctrl.estados track by v.IdEstado" required-message="'Error!, Este campo es obligatorio.'" required></select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Ciudad</label>
-              <div class="col-sm-5"><input type="text" class="form-control" validate-on="dirty" name="ciudad" class="form-control" ng-model="$ctrl.suscriptor.Ciudad" required-message="'Error!, Este campo es obligatorio.'" required></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Colonia</label>
-              <div class="col-sm-5"><input type="text" class="form-control" validate-on="dirty" name="colonia" class="form-control" ng-model="$ctrl.suscriptor.Colonia" required-message="'Error!, Este campo es obligatorio.'" required></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Calle</label>
-              <div class="col-sm-5"><input type="text" class="form-control" validate-on="dirty" name="calle" class="form-control" ng-model="$ctrl.suscriptor.Calle" required-message="'Error!, Este campo es obligatorio.'" required></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Número</label>
-              <div class="col-sm-3"><input type="text" class="form-control" validate-on="dirty" class="form-control" name="numero" ng-model="$ctrl.suscriptor.Numero" required-message="'Error!, Este campo es obligatorio.'" required></div>
-              <label class="col-sm-1 control-label text-left">CP</label>
-              <div class="col-sm-3"><input type="text" ng-model="$ctrl.suscriptor.CP" validate-on="dirty" name="cp" required-message="'Error!, Este campo es obligatorio.'" class="form-control" required></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label class="col-sm-2 control-label text-right">Referencia</label>
-              <div class="col-sm-5"><input type="text" ng-model="$ctrl.suscriptor.Referencia" class="form-control"></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-</div>
+</form>

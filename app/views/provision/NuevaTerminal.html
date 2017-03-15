@@ -1,94 +1,94 @@
-<div class="panel" style="height:100px;">
-  <div class="panel-body" style="margin-top:-20px;">
-    <div class="col-md-6 col-sm-12">
-      <h3 class="animated fadeInLeft">{{$ctrl.titulo}}</h3>
-      <p class="animated fadeInDown"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Terminales</p>
-    </div>
-  </div>
-</div>
+<form angular-validator-submit="$ctrl.GuardaTerminal()" name="myForm" class="form-horizontal" novalidate angular-validator>
+  <div class="card" style="margin-top:10px;">
+    <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+      <header>
+        <strong style="font-weight:bold; border:none; margin-left:10px;">{{$ctrl.titulo}}</strong>
+        <br /><small class="text-muted" style="font-size:14px; margin-left:10px;"> <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>><a href="#" class="paginaActiva">Provisión</a></small>
 
-<div class="col-md-12">
-    <form angular-validator-submit="$ctrl.GuardaTerminal()" name="myForm" class="form-horizontal" novalidate angular-validator>
+      </header>
+      <div class="tools">
+
+        <button class="btn btn-raised btn-success btn-sm" type="submit">Guardar </button>
+        <button class="btn btn-raised btn-default btn-sm" ui-sref="home.provision.terminales">Cancelar</button>
+
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="col-md-12">
+
         <div class="panel form-element-padding">
-          <div class="panel-heading">
-            <p class="text-right">
-              <button class="btn btn-raised btn-default btn-sm" ui-sref="home.provision.terminales">Cancelar</button>
-              <button class="btn btn-raised btn-success btn-sm" type="submit">Guardar </button>
-            </p>
-            <div class="tools" style="margin-top:-30px;">
-              <p class="text-left">Nueva Terminal
-              </p>
-            </div>
-          </div>
           <div class="panel-body">
             <div class="col-md-8 ">
               <div class="row form-group">
-                <div class="col-md-6">
+                <div class="col-md-10">
                   <b>Suscriptor</b>
-                  <input type="text" class="form-control" disabled name="sucriptor" ng-model="$ctrl.NombreSuscriptor"  validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
+                  <input type="text" class="form-control input-sm" disabled name="sucriptor" ng-model="$ctrl.NombreSuscriptor" validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
                 </div>
-                <div class="col-md-6 text-left">
+                <div class="col-md-2 text-left">
                   <br>
                   <a class="btn btn-primary btn-sm" ng-click="$ctrl.BuscaSuscriptor()"><i class="fa fa-search"></i> Buscar</a>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <b>Servicio</b>
                   <br>
-                  <select ng-model="$ctrl.Servicio" class="form-control" name="servicio" ng-options="item as item.Nombre for item in $ctrl.Servicios track by item.IdServicio" validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
-                    <option value="">selecciona</option>
-                    </select>
+                  <select ng-model="$ctrl.Servicio" class="form-control input-sm" name="servicio" ng-options="item as item.Nombre for item in $ctrl.Servicios track by item.IdServicio" validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
+                            <option value="">selecciona</option>
+                            </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <b>ESN</b><br>
-                  <input type="text" class="form-control" placeholder="ESN" name="esn" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" ng-model="$ctrl.ESN">
+                  <input type="text" class="form-control input-sm" placeholder="ESN" name="esn" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" ng-model="$ctrl.ESN">
                 </div>
               </div>
               <div class="row">
-                  <br>
-                  <div class="col-md-5">
-                    <b>Latitud</b>
-                    <input type="text" class="form-control" name="latitus" validate-on="dirty" required-message="'Este campo es obligatorio.'" required validate-on="dirty" placeholder="Latitud" ng-model="$ctrl.Latitud">
-                  </div>
-                  <div class="col-md-5">
-                    <b>Longuitud</b><br>
-                    <input type="text" name="longitud" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" class="form-control" placeholder="Longuitud" ng-model="$ctrl.Longuitud">
-                  </div>
-                  <div class="col-md-2" style="margin-top:20px;">
-                      <a class="btn btn-warning btn-sm" ng-click="$ctrl.BuscaLatLong()"><i class="fa fa-globe"></i></a>
-                  </div>
+                <br>
+                <div class="col-md-5">
+                  <b>Latitud</b>
+                  <input type="text" class="form-control input-sm" name="latitus" validate-on="dirty" required-message="'Este campo es obligatorio.'" required validate-on="dirty" placeholder="Latitud" ng-model="$ctrl.Latitud">
+                </div>
+                <div class="col-md-5">
+                  <b>Longuitud</b><br>
+                  <input type="text" name="longitud" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" class="form-control input-sm" placeholder="Longuitud" ng-model="$ctrl.Longuitud">
+                </div>
+                <div class="col-md-2" style="margin-top:20px;">
+                  <a class="btn btn-warning btn-sm" ng-click="$ctrl.BuscaLatLong()"><i class="fa fa-globe"></i></a>
+                </div>
               </div>
               <div class="row form-group">
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <b>Status</b><br>
-                  <select type="text" validate-on="dirty" name="status" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-options="item as item.Nombre for item in $ctrl.ListaStatus track by item.clave" class="form-control" ng-model="$ctrl.Status">
-                    <option value="">selecciona</option>
-                    </select>
+                  <select type="text" validate-on="dirty" name="status" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-options="item as item.Nombre for item in $ctrl.ListaStatus track by item.clave" class="form-control input-sm" ng-model="$ctrl.Status">
+                            <option value="">selecciona</option>
+                            </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <b>Fecha de alta</b><br>
-                  <input type="date" class="form-control" validate-on="dirty" name="fecha" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-model="$ctrl.FechaAlta">
+                  <input type="date" class="form-control input-sm" validate-on="dirty" name="fecha" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-model="$ctrl.FechaAlta">
                 </div>
               </div>
               <div class="row">
-                  <div class="col-md-6">
-                    <b>Fecha de suspensión</b><br>
-                    <input type="text" class="form-control" placeholder="fecha suspension" ng-model="$ctrl.FechaSuspencion" ng-disabled="true">
-                  </div>
-                  <div class="col-md-6">
-                    <b>Fecha de cancelación</b><br>
-                    <input type="text" class="form-control" placeholder="fecha cancelación" ng-model="$ctrl.FechaCancelacion" ng-disabled="true">
-                  </div>
+                <div class="col-md-5">
+                  <b>Fecha de suspensión</b><br>
+                  <input type="text" class="form-control input-sm" placeholder="fecha suspension" ng-model="$ctrl.FechaSuspencion" ng-disabled="true">
+                </div>
+                <div class="col-md-5">
+                  <b>Fecha de cancelación</b><br>
+                  <input type="text" class="form-control input-sm" placeholder="fecha cancelación" ng-model="$ctrl.FechaCancelacion" ng-disabled="true">
+                </div>
               </div>
               <div class="row">
-                  <div class="col-md-12">
-                    <b>Comentarios</b><br>
-                    <textarea class="form-control" ng-model="$ctrl.Comentarios"></textarea>
-                  </div>
+                <div class="col-md-10">
+                  <b>Comentarios</b><br>
+                  <textarea class="form-control input-sm" ng-model="$ctrl.Comentarios" placeholder="Captura las observaciones "></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
-    </form>
-</div>
+
+      </div>
+    </div>
+  </div>
+</form>

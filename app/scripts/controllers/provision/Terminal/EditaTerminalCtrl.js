@@ -1,37 +1,39 @@
 'use strict';
-angular.module('softvFrostApp').controller('EditaTerminalCtrl', TerminalCtrl);
 
-function TerminalCtrl(terminalFactory, nuevoSuscriptorFactory, $uibModal, $rootScope, ngNotify, $stateParams, $state) {
+function EditaTerminalCtrl(terminalFactory, nuevoSuscriptorFactory, $uibModal, $rootScope, ngNotify, $stateParams, $state) {
 	this.$onInit = function() {
 		terminalFactory.getTerminalById($stateParams.Id).then(function(data) {
-			vm.terminal = data.GetByTerminalResult;
-			console.log(data);
-			vm.IdSuscriptor = vm.terminal.IdSuscriptor;
-			vm.ESN = vm.terminal.ESN;
-			vm.Latitud = vm.terminal.Latitud;
-			vm.Longuitud = vm.terminal.Longitud;
-			nuevoSuscriptorFactory.getSuscriptor(vm.terminal.IdSuscriptor).then(function(data) {
-				vm.suscriptor = data.GetSuscriptorResult;
-				vm.NombreSuscriptor = vm.suscriptor.Nombre + ' ' + vm.suscriptor.Apellido
-			});
-			terminalFactory.getServicioList().then(function(data) {
-				vm.Servicios = data.GetServicioListResult;
-				vm.Servicios.forEach(function(entry, index) {
-					if (entry.IdServicio == vm.terminal.IdServicio) {
-						vm.Servicio = vm.Servicios[index];
+			if (data.GetByTerminalResult == null) {
+				$state.go('home.provision.terminales');
+			} else {
+				vm.terminal = data.GetByTerminalResult;
+				vm.IdSuscriptor = vm.terminal.IdSuscriptor;
+				vm.ESN = vm.terminal.ESN;
+				vm.Latitud = vm.terminal.Latitud;
+				vm.Longuitud = vm.terminal.Longitud;
+				nuevoSuscriptorFactory.getSuscriptor(vm.terminal.IdSuscriptor).then(function(data) {
+					vm.suscriptor = data.GetSuscriptorResult;
+					vm.NombreSuscriptor = vm.suscriptor.Nombre + ' ' + vm.suscriptor.Apellido
+				});
+				terminalFactory.getServicioList().then(function(data) {
+					vm.Servicios = data.GetServicioListResult;
+					vm.Servicios.forEach(function(entry, index) {
+						if (entry.IdServicio == vm.terminal.IdServicio) {
+							vm.Servicio = vm.Servicios[index];
+						}
+					});
+				});
+				vm.ListaStatus.forEach(function(entry, index) {
+					if (entry.clave == vm.terminal.Estatus) {
+						vm.Status = vm.ListaStatus[index];
 					}
 				});
-			});
-			vm.ListaStatus.forEach(function(entry, index) {
-				if (entry.clave == vm.terminal.Estatus) {
-					vm.Status = vm.ListaStatus[index];
-				}
-			});
-			var date = vm.terminal.FechaAlta.replace(/[^0-9\.]+/g, '');
-			var pattern = /(\d{2})(\d{2})(\d{4})/;
-			date = new Date(date.replace(pattern, '$2/$1/$3'));
-			vm.FechaAlta = date;
-			vm.Comentarios = vm.terminal.Comentarios;
+				var date = vm.terminal.FechaAlta.replace(/[^0-9\.]+/g, '');
+				var pattern = /(\d{2})(\d{2})(\d{4})/;
+				date = new Date(date.replace(pattern, '$2/$1/$3'));
+				vm.FechaAlta = date;
+				vm.Comentarios = vm.terminal.Comentarios;
+			}
 		});
 	}
 
@@ -51,9 +53,12 @@ function TerminalCtrl(terminalFactory, nuevoSuscriptorFactory, $uibModal, $rootS
 	}
 
 	function BuscaLatLong() {
-		vm.animationsEnabled = true;
+		var obj = {
+			lat: vm.Latitud,
+			long: vm.Longuitud
+		};
 		var modalInstance = $uibModal.open({
-			animation: vm.animationsEnabled,
+			animation: true,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
 			templateUrl: 'views/provision/ModalGetLatLong.html',
@@ -61,7 +66,12 @@ function TerminalCtrl(terminalFactory, nuevoSuscriptorFactory, $uibModal, $rootS
 			controllerAs: 'ctrl',
 			backdrop: 'static',
 			keyboard: false,
-			size: 'lg'
+			size: 'lg',
+			resolve: {
+				datosGis: function() {
+					return obj;
+				}
+			}
 		});
 	}
 	$rootScope.$on('cliente_seleccionado', function(e, detalle) {
@@ -122,3 +132,5 @@ function TerminalCtrl(terminalFactory, nuevoSuscriptorFactory, $uibModal, $rootS
 		}
 	];
 }
+
+angular.module('softvFrostApp').controller('EditaTerminalCtrl', EditaTerminalCtrl);

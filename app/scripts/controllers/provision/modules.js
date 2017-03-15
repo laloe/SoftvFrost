@@ -1,7 +1,5 @@
 'use strict';
-angular.module('softvFrostApp').config(provisionConf);
-
-function provisionConf($stateProvider) {
+angular.module('softvFrostApp').config(function($stateProvider) {
 	var states = [{
 			name: 'home.provision',
 			abstract: true,
@@ -22,7 +20,8 @@ function provisionConf($stateProvider) {
 			templateUrl: 'views/provision/suscriptores.html',
 			controller: 'SuscriptorCtrl',
 			controllerAs: '$ctrl'
-		}, {
+		},
+		{
 			name: 'home.provision.terminales',
 			data: {
 				pageTitle: 'SOFTV | Terminales',
@@ -235,4 +234,4 @@ function provisionConf($stateProvider) {
 	states.forEach(function(state) {
 		$stateProvider.state(state);
 	});
-}
+});

@@ -87,7 +87,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-<div class="login-page">
+<div class="login-page" style="margin-top:-40px;">
   <div class="form">
     <img src="images/logo.png" style="width:250px; margin-top:-50px;">
     <form class="login-form" angular-validator-submit="$ctrl.login()" name="myForm" novalidate angular-validator>
@@ -95,7 +95,7 @@ body {
             <input type="text" placeholder="username" name="nombre" ng-model="$ctrl.user" validate-on="dirty" ng-model="form.dirty" class="form-control" required-message="'El usuario es obligatorio.'" required/>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="password" name="password" ng-model="$ctrl.password" validate-on="dirty" ng-model="form.dirty" class="form-control" required-message="'La contraseña es obligatorio.'" required/>
+            <input type="password" placeholder="password" name="password" ng-model="$ctrl.password" validate-on="dirty" ng-model="form.dirty" class="form-control" required-message="'La contraseña es obligatoria.'" required/>
         </div>
       <button type="submit">login</button>
       <p class="message">No estas registrado? <a href="">Contacta al Administrador</a></p>

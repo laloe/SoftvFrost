@@ -1,0 +1,89 @@
+<div class="modal-header">
+  <button class="close" aria-label="Close" type="button" ng-click="ctrl.cancel()">×</button>
+  <h4 class="modal-title">sign off</h4>
+</div>
+<div class="modal-body" style="padding:40px;">
+  <div class="row">
+    <div class="col-md-3"><b>FSO:</b>{{ctrl.headers.siteOrder.fso}}</div>
+    <div class="col-md-3"><b>SAN:</b>{{ctrl.headers.san}}</div>
+    <div class="col-md-3"><b>Visit Type:</b>{{ctrl.headers.siteOrder.visitType}}</div>
+    <div class="col-md-3"><b>SignOff Id:</b>{{ctrl.headers.signOff.signoffId}}</div>
+  </div>
+  <div class="row">
+    <br>
+    <p>Please indicate the site installation problems and actions performed....</p>
+    <br>
+    <div class="col-md-4 ">
+      <center><b>Installation</b></center><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+
+  											<input type="checkbox"  ng-model="ctrl.sight"><span>Line of sight</span>
+  										</label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                      											<input type="checkbox" ng-model="ctrl.dish"><span>Replace Dish</span>
+                      										</label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                          											<input type="checkbox" ng-model="ctrl.repaired"><span>Repaired/replaced cable/connector/ground block/weather</span>
+                                          										</label><br><br>
+      <center><b>No installation Problems</b></center>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                                    <input type="checkbox" ng-model="ctrl.noinstallation"><span>No installation problems</span>
+                                                                                  </label>
+
+    </div>
+    <div class="col-md-4">
+      <center><b>Hardware</b></center>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+  											<input type="checkbox" value="option3" ng-model="ctrl.feedhorn"><span>Replace/Repair feedhorn polarizer</span>
+  										</label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                      											<input type="checkbox"   ng-model="ctrl.radio"><span>Defective radio being returned from repair</span>
+                      										</label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                <input type="checkbox" ng-model="ctrl.modem"><span>Defective modem being returned from repair</span>
+                                                              </label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                                    <input type="checkbox"  ng-model="ctrl.power"><span>Replace power supply</span>
+                                                                                  </label><br>
+
+
+    </div>
+    <div class="col-md-4">
+      <center><b>Software</b></center>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                        <input type="checkbox" ng-model="ctrl.modemsoftware" >
+                        <span>Modem software Installation/proccesing problem</span>
+                      </label><br>
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                            <input type="checkbox" ng-model="ctrl.NOCC"  ng-checked="false"><span>NOCC/Tier 3 Corrected Network Problem</span>
+                                          </label><br>
+      <center><b>Customer related</b></center>
+
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                <input type="checkbox" ng-model="ctrl.customerRefused" ng-checked="false"><span>Customer refused install</span>
+                                                              </label><br>
+
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                                    <input type="checkbox" ng-model="ctrl.customersoft" ng-checked="false"><span>Customer equipment/software/router problems</span>
+                                                                                  </label><br>
+      <center><b>Other</b></center>
+
+      <label class="checkbox-inline checkbox-styled checkbox-success">
+                                                                                                        <input type="checkbox" ng-model="ctrl.other" ng-checked="false"><span>Other</span>
+                                                                                                      </label><br>
+
+
+    </div>
+  </div>
+  <div class="row">
+    <p>Provide installation details bellow...</p>
+    <textarea class="form-control" ng-model="ctrl.DetailProblem"></textarea>
+    <br>
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-danger btn-sm" ng-click="ctrl.SingOff();">Sign Off</button>
+  <button class="btn btn-default-bright btn-sm" type="button" ng-click="ctrl.cancel()">Cerrar</button>
+</div>

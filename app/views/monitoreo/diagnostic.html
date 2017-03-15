@@ -1,0 +1,497 @@
+<div class="card" style="margin-top:20px;">
+  <div class="card-head card-head-xs style-info">
+    <header>HughesNet <small class="text-muted">TDS/Jupiter-Site Diagnostic Tool</small> </header>
+  </div>
+  <div class="row">
+    <form ng-submit="$ctrl.searchSan()">
+      <div class="col-md-5" style="min-height: 100px; padding-top:20px;">
+        <div class="col-md-1">
+          <label>San:</label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" ng-model="$ctrl.san" />
+        </div>
+        <div class="col-md-6" style="padding-top:5px; padding-left:-5px;">
+          <button type="submit" class="btn btn-sm btn-default">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="panel-group col-md-12" style="margin-top: -10px;" ng-show="$ctrl.showSan">
+    <div class="card panel">
+      <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#diagnostic" data-target="#diagnostic-1" aria-expanded="false">
+        <header>Diagnostic Tools</header>
+        <div class="tools">
+          <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+        </div>
+      </div>
+      <div id="diagnostic-1" class="collapse diagnostic" aria-expanded="false" style="height: 0px;">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-6 text-right">
+                <p><strong>SAN:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px;">
+                <p>{{ $ctrl.diagnosticData.SAN }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Adapter Type:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Adapter_Type }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Gateway Id:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.GW_ID }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Beam Id:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Beam_ID }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Latitude:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Lat }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Longitude:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Lng }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Antenna Size:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Antenna_Size }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>ODU Power</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.ODU_Pwr }}</p>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Terminal State Code:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Terminal_State_Code }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>IMG Status:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.IGM_Status }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Overall GM Status:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Overall_GW_Status }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-6 text-right">
+                <p><strong>UL/DL Group:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px;">
+                <p>{{ $ctrl.diagnosticData.ULDL_Group }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Polarization:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Polarization }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>IDU ESN:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.ESN }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>ODU SN:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.ODU_SN }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Modem Temp:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Modem_Temp }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Last Reboot Reason:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Last_Reboot_Reason }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Last Reboot Date:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Last_Reboot_Date }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Activation Date:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Activation_Date }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>SW Version:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.SW_Version }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Service Profile:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Service_Profile }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>IPGW Status:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.IPGW_Status }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-6 text-right">
+                <p><strong>UL Atten:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px;">
+                <p>{{ $ctrl.diagnosticData.Adapter_Type }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>DL Atten:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.UL_Atten }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>UL Atten Offset:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.UL_Atten_Offset }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>DL Atten Offset:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.DL_Atten_Offset }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Normalized UL Es/No:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Norm_UL_EsNo }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Normalized DL Es/No:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Norm_DL_EsNo }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Realtime UL Es/No Offset:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.RT_UL_EsNo_Offset }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Realtime DL Es/No Offset:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.RT_DL_EsNo_Offset }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Realtime Outroute Offset:</strong></p>
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.RT_Outroute_Offset }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>Last Processed Date:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.Last_Processed_Date }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-right" style="margin-top: -10px;">
+                <p><strong>CRO Status:</strong></p>
+
+              </div>
+              <div class="col-md-6 text-left" style="margin-left:-20px; margin-top: -10px;">
+                <p>{{ $ctrl.diagnosticData.CRO_Status }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end .panel -->
+  </div>
+  <div class="panel-group col-md-12" style="margin-top:-20px;" ng-show="$ctrl.showSan">
+    <div class="card panel">
+      <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#diagnosis" data-target="#diagnosis-1" aria-expanded="false">
+        <header>Diagnosis</header>
+        <div class="tools">
+          <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+        </div>
+      </div>
+      <div id="diagnosis-1" class="collapse diagnosis" aria-expanded="false" style="height: 0px;">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2" style="margin-top:-20px;">
+            <p><strong>Diagnosis: </strong>{{ $ctrl.diagnosticData.Diagnosis }}</p>
+            <p><strong>Recommended Action: </strong>{{ $ctrl.diagnosticData.Recommended_Action }}</p>
+            <p><button class="btn btn-sm btn-default" ng-click="$ctrl.recommendedAction()">Completed Action</button></p>
+            <p style="padding-left:20px;"><small>(Perform recommended action above, then click "Completed Action")</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end .panel -->
+  </div>
+  <div class="panel-group col-md-12" style="margin-top:-20px;" ng-show="$ctrl.showSan">
+    <div class="card panel">
+      <div class="card-head card-head-xs collapsed" data-toggle="collapse" data-parent="#table-info" data-target="#table-info-1" aria-expanded="false">
+        <header>Information Table</header>
+        <div class="tools">
+          <a class="btn btn-icon-toggle"><i class="fa fa-angle-down"></i></a>
+        </div>
+      </div>
+      <div id="table-info-1" class="collapse table-info" aria-expanded="false">
+        <div class="col-md-12" style="margin-left:10px;">
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Current_Stats')">Get Curren Stats</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Force_range')">Force Range</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Clear_Term_Stats')">Clear Terminal Stats</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Reregister')">Register</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Reload_tables')">Reload Tables</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Force_fallback')">Force Fallback</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Reboot')">Reboot</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Reassociate')">Re-Associate</button>
+          <button class="btn btn-sm btn-default" ng-click="$ctrl.acctionButtons('Clear_PEP_Stats')">Clear PEP Stats</button>
+        </div>
+        <div class="col-md-12" style="padding-top:10px; padding-left:20px; padding-right:10px;">
+          <table class="table table-bordered">
+            <thead>
+              <th colspan="2"></th>
+              <th class="text-center" colspan="3">Packet Loss Stats</th>
+              <th class="text-center" colspan="2">Uplink Stats</th>
+              <th class="text-center" colspan="3">Downlink Stats</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center"></td>
+                <td class="text-center">Timestamp</td>
+                <td class="text-center">UL Pkt Losss %</td>
+                <td class="text-center">Aloha Pkt Loss %</td>
+                <td class="text-center"> DL Pkt Loss %</td>
+                <td class="text-center">UL Es/No Avail</td>
+                <td class="text-center">UL Deviation</td>
+                <td class="text-center">DL Es/No</td>
+                <td class="text-center">MODCOD</td>
+                <td class="text-center">DL Deviation</td>
+              </tr>
+              <tr>
+                <td class="text-right">History Values</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_Timestamp }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_UL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_Aloha_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_DL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_ULEsNo_Avail }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_UL_Dev }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_DL_EsNo }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_MODCOD }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.H_DL_Dev }}</td>
+              </tr>
+              <tr>
+                <td class="text-right">Target Values</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_Timestamp }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_UL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_Aloha_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_DL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_ULEsNo_Avail }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_UL_Dev }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_DL_EsNo }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_MODCOD }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.T_DL_Dev }}</td>
+              </tr>
+              <tr>
+                <td class="text-right">Curren Values</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_Timestamp }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_UL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_Aloha_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_DL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_ULEsNo_Avail }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_UL_Dev }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_DL_EsNo }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_MODCOD }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.C_DL_Dev }}</td>
+              </tr>
+              <tr>
+                <td class="text-right">Difference</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_Timestamp }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_UL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_Aloha_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_DL_Pkt_Loss_pct }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_ULEsNo_Avail }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_UL_Dev }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_DL_EsNo }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_MODCOD }}</td>
+                <td class="text-center">{{ $ctrl.diagnosticData.D_DL_Dev }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6" ng-if="$ctrl.diagnosticData.gw_weather != 'N/A'">
+            <div class="card">
+              <div class="card-body no-padding">
+                <div class="alert alert-callout alert-success no-margin" style="height: 150px;">
+                  <h1 class="pull-right text-success"><img src="https://icons.wxug.com/i/c/k/chanceflurries.gif" alt=""></h1>
+                  <strong class="text-md">Current Weather Conditions At Gateway</strong><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.gw_weather }}, {{ $ctrl.diagnosticData.gw_Temp_F }}</span><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.gw_rainfall_lasthr }}</span><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.gw_visibility }}</span><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" ng-if="$ctrl.diagnosticData.Site_weather != 'N/A'">
+            <div class="card">
+              <div class="card-body no-padding">
+                <div class="alert alert-callout alert-success no-margin" style="height: 150px;">
+                  <h1 class="pull-right text-success"><img src="https://icons.wxug.com/i/c/k/chanceflurries.gif" alt=""></h1>
+                  <strong class="text-md">Current Weather Conditions At {{ $ctrl.diagnosticData.$ctrl.diagnosticData }}, {{ $ctrl.diagnosticData.$ctrl.Site_City }} </strong><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.Site_weather }}, {{ $ctrl.diagnosticData.gw_Temp_F }}</span><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.Site_rainfall_lasthr }}</span><br>
+                  <span class="opacity-50">{{ $ctrl.diagnosticData.Site_visibility }}</span><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" ng-if="$ctrl.diagnosticData.gw_weather == 'N/A'" >
+            <div class="card">
+              <div class="card-body no-padding">
+                <div class="alert alert-callout alert-success no-margin" style="height: 150px;">
+                  <h1 class="pull-right text-success"><img src="https://icons.wxug.com/i/c/k/partlysunny.gif" alt=""></h1>
+                  <strong class="text-md">Current Weather Conditions At Gateway</strong><br>
+                  <span class="opacity-50">Mosttly Cloudy, 80.8F</span><br>
+                  <span class="opacity-50">RainFall - Last Hour --999.00"</span><br>
+                  <span class="opacity-50">Visibility: 10.0 Miles</span><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" ng-if="$ctrl.diagnosticData.Site_weather == 'N/A'">
+            <div class="card">
+              <div class="card-body no-padding">
+                <div class="alert alert-callout alert-success no-margin" style="height: 150px;">
+                  <h1 class="pull-right text-success"><img src="https://icons.wxug.com/i/c/k/cloudy.gif" alt=""></h1>
+                  <strong class="text-md">Current Weather Conditions At S. Joaquim 1345, South Carolina </strong><br>
+                  <span class="opacity-50">Scattered Clouds, 57.4F</span><br>
+                  <span class="opacity-50">RainFall - Last Hour --999.00"</span><br>
+                  <span class="opacity-50">Visibility: 10.0 Miles</span><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

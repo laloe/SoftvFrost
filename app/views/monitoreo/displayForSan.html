@@ -1,0 +1,192 @@
+<style type="text/css">
+	.scrollDiv{
+	    height: 300px;
+	    overflow: auto;
+	    overflow-x: hidden;
+	}
+	.scrollDiv2{
+	    height: 200px;
+	    overflow: auto;
+	    overflow-x: hidden;
+	}
+</style>
+<div class="card" style="margin-top:20px;">
+  <div class="card-head card-head-xs style-info">
+	<header>TDS/Jupiter Diagnostic Display For SAN - DSS34093259</header>
+      <!-- <strong style="font-weight:bold; border:none; margin-left:10px;">HughesNet</strong>
+      <br /><small class="text-muted" style="font-size:14px; margin-left:10px;">Jupiter Diagnostic Display For SAN - DSS34093259</small> -->
+  </div>
+  <br>
+  <div class="row text-center">
+      <div class="col-md-6 col-md-offset-5">
+          <button type="button" class="btn btn-default" name="button" ng-click="$ctrl.displayTest()">Display Speed Test Results</button>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-6 col-md-offset-1 card scrollDiv"  style="background:#E2EBEA">
+          <h5 class="text-primary text-center" style="margin-top: 50px;">Terminal Stats:</h5>
+          <ul style="font-size: 11px;">
+              <li>Serial Number ............{{$ctrl.jul1['Serial Number']}}</li>
+              <li>System State Code ........{{$ctrl.jul1['System State Code']}} ({{$ctrl.jul1['System State Code Description']}})</li>
+              <li>Downlink SQF .............{{$ctrl.jul1['Downlink SQF']}}</li>
+              <li>LAN Status ...............{{$ctrl.jul1['LAN Status']}}</li>
+              <li>FAP Status ...............{{$ctrl.jul1['FAP State Code']}}</li>
+              <li>Web MBX Status ...........{{$ctrl.jul1['MBX Status']}}</li>
+              <li>Web Acceleration Status ..{{$ctrl.jul1['TCP Acceleration State Code']}}</li>
+              <li>Hour Diagnostic Code .....{{$ctrl.jul1['Hour Diagnostic Code']}}</li>
+              <li>Minute Diagnostic Code ...{{$ctrl.jul1['Minute Diagnostic Code']}}</li>
+              <li>Walled Garden? ...........{{$ctrl.jul1['']}}</li>
+              <li>Uptime ...................{{$ctrl.jul2['Terminal UpTime']}}</li>
+          </ul>
+      </div>
+      <div class="col-md-4 card scrollDiv" style="padding-right: 30px; background:#E2EBEA">
+		  <h5 class="text-primary text-center" style="margin-top: 10px;">LAN Diagnostics Current State:</h5>
+		  <table class="table">
+			  <thead>
+				  <tr>
+					  <th style="background:#81BEF7">Current State</th>
+					  <th style="background:#81BEF7">Status</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  <tr style="font-size: 11px;">
+					  <td class="active">Router Detected?<br><span style="color:red">(If NO, verify with the customer)</span></td>
+					  <td  class="active"><span style="color:red">No</span></td>
+				  </tr>
+				  <tr style="font-size: 11px;">
+					  <td class="info">LAN cable from modem to router is connected<br>property<br><span style="color:red">(If NO, check connections)</span></td>
+					  <td class="info"><span style="color:green">Yes</span></td>
+				  </tr>
+			  </tbody>
+		  </table>
+
+		  <h5 class="text-primary text-center" style="margin-top: 10px;">LAN Diagnostics:</h5>
+		  <table class="table">
+			  <thead>
+				  <tr>
+					  <th style="background:#81BEF7">Historical LAN Diagnostics</th>
+					  <th style="background:#81BEF7">Status</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  <tr style="font-size: 11px;">
+					  <td class="active">Router Performance</td>
+					  <td  class="active"><span style="color:green">No</span></td>
+				  </tr>
+				  <tr style="font-size: 11px;">
+					  <td class="info">Wireless device/s performance</td>
+					  <td  class="info"><span style="color:green">No</span></td>
+				  </tr>
+				  <tr style="font-size: 11px;">
+					  <td class="active">Wireles network coverage</td>
+					  <td  class="active"><span style="color:green">No</span></td>
+				  </tr>
+				  <tr style="font-size: 11px;">
+					  <td class="info">Indeterminate issue</td>
+					  <td  class="info"><span style="color:green">No</span></td>
+				  </tr>
+				  <tr class="text-center" style="font-size: 11px;">
+					  <td class="active">See KB 8052 for more information</td>
+					  <td  class="active"><span style="color:red"></span></td>
+				  </tr>
+			  </tbody>
+		  </table>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6 col-md-offset-1 card scrollDiv2"  style="background:#E2EBEA">
+          <h5 class="text-primary text-left" style="margin-top: 20px;">Device Mac Addresses:</h5>
+          <ul style="font-size: 11px;">
+              <li>ARP MAC Entry-1............{{$ctrl.jul1['ARP MAC Entry-1']}}</li>
+              <li>ARP MAC Entry-2............{{$ctrl.jul1['ARP MAC Entry-2']}}</li>
+              <li>ARP MAC Entry-3............{{$ctrl.jul1['ARP MAC Entry-3']}}</li>
+              <li>ARP MAC Entry-4............{{$ctrl.jul1['ARP MAC Entry-4']}}</li>
+              <li>ARP MAC Entry-5............{{$ctrl.jul1['ARP MAC Entry-5']}}</li>
+          </ul>
+      </div>
+      <div class="col-md-4 card scrollDiv2" style="padding-right: 30px; background:#E2EBEA">
+          <h5 class="text-primary text-center" style="margin-top: 10px;">Ip Connectivity Status:</h5>
+          <label>IP Connectivity Status</label>
+          <ul style="font-size: 11px;">
+              <li>Packets Transmitted.............{{$ctrl.ip['Packets Transmitted']}}</li>
+              <li>Packets Received................{{$ctrl.ip['Packets Received']}}</li>
+              <li>Packets Loss....................{{$ctrl.ip['Packet Loss']}}</li>
+              <li>Minimum Delay Time..............{{$ctrl.ip['Minimum Delay Time']}}</li>
+              <li>Maximum Delay Time..............{{$ctrl.ip['Maximum Delay Time']}}</li>
+              <li>Avarage Delay Time..............{{$ctrl.ip['Average Delay Time']}}</li>
+              <li>Maximum Jitter..................{{$ctrl.ip['Maximum Jitter']}}</li>
+          </ul>
+      </div>
+  </div>
+  <div class="row">
+	  <div class="col-md-10 col-md-offset-1">
+		  <table class="table">
+      		<thead>
+      			<tr>
+      				<th colspan="2">Alarm History:</th>
+    				<th colspan="7"></th>
+					<th colspan="1">Reboot History</th>
+					<th colspan="1"></th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      			<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">Alarm Timestamp (UTC)</td>
+      				<td  class="active" colspan="1">Event ID</td>
+					<td class="active" colspan="2">Severity</td>
+      				<td  class="active" colspan="3">Reason</td>
+					<td class="active" colspan="1">Probable Cause</td>
+      				<td  class="active" colspan="1">Timestamp</td>
+					<td class="active" colspan="1">Reboot Reason</td>
+      			</tr>
+				<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">{{$ctrl.entry1[0]}}</td>
+      				<td  class="active" colspan="1">{{$ctrl.entry1[1]}}</td>
+					<td class="active" colspan="2">{{$ctrl.entry1[2]}}</td>
+      				<td  class="active" colspan="3">{{$ctrl.entry1[3]}}</td>
+					<td class="active" colspan="1"></td>
+      				<td  class="active" colspan="1"></td>
+					<td class="active" colspan="1"></td>
+      			</tr>
+				<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">{{$ctrl.entry2[0]}}</td>
+      				<td  class="active" colspan="1">{{$ctrl.entry2[1]}}</td>
+					<td class="active" colspan="2">{{$ctrl.entry2[2]}}</td>
+      				<td  class="active" colspan="3">{{$ctrl.entry2[3]}}</td>
+					<td class="active" colspan="1"></td>
+      				<td  class="active" colspan="1"></td>
+					<td class="active" colspan="1"></td>
+      			</tr>
+				<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">{{$ctrl.entry3[0]}}</td>
+      				<td  class="active" colspan="1">{{$ctrl.entry3[1]}}</td>
+					<td class="active" colspan="2">{{$ctrl.entry3[2]}}</td>
+      				<td  class="active" colspan="3">{{$ctrl.entry3[3]}}</td>
+					<td class="active" colspan="1"></td>
+      				<td  class="active" colspan="1"></td>
+					<td class="active" colspan="1"></td>
+      			</tr>
+				<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">{{$ctrl.entry4[0]}}</td>
+      				<td  class="active" colspan="1">{{$ctrl.entry4[1]}}</td>
+					<td class="active" colspan="2">{{$ctrl.entry4[2]}}</td>
+      				<td  class="active" colspan="3">{{$ctrl.entry4[3]}}</td>
+					<td class="active" colspan="1"></td>
+      				<td  class="active" colspan="1"></td>
+					<td class="active" colspan="1"></td>
+      			</tr>
+				<tr style="font-size: 11px;">
+      				<td class="active" colspan="2">{{$ctrl.entry5[0]}}</td>
+      				<td  class="active" colspan="1">{{$ctrl.entry5[1]}}</td>
+					<td class="active" colspan="2">{{$ctrl.entry5[2]}}</td>
+      				<td  class="active" colspan="3">{{$ctrl.entry5[3]}}</td>
+					<td class="active" colspan="1"></td>
+      				<td  class="active" colspan="1"></td>
+					<td class="active" colspan="1"></td>
+      			</tr>
+      		</tbody>
+      	</table>
+	  </div>
+  </div>
+</div>

@@ -1,0 +1,393 @@
+<style>
+  .font-reduced {
+    font-size: 13px;
+  }
+
+  .table>tfoot>tr>td {
+    padding: 5px !important;
+  }
+</style>
+
+<div class="card" style="margin-top:20px;" ng-show="$ctrl.OVT1">
+  <div class="card-head card-head-xs style-info">
+    <header>HughesNet <small class="text-muted">TDS/Jupiter-Onsite Validation Tool (1 of 3)</small> </header>
+  </div>
+
+  <div class="row text-center">
+    <h5 style="color: #0aa89e;">Step 1: Verify FSO and Site Information> </h5>
+  </div>
+  <div class="row text-center">
+    <button type="button" class="btn btn-sm btn-default" name="button" ng-click="$ctrl.getRefresh()"><i class="fa fa-refesh
+"></i> Refresh Site Info</button>
+    <button type="button" class="btn btn-sm btn-default-dark" name="button" ng-click="$ctrl.getPing()"><i class="fa fa-terminal"></i> Ping Terminal</button>
+  </div>
+
+  <div class="card">
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <tbody>
+            <tr>
+              <td><b style="font-size: smaller;">FSO:</b></td>
+              <td>
+                <p>{{$ctrl.Details.siteOrder.fso}}</p>
+              </td>
+              <td><b style="font-size: smaller;">SAN:</p></td>
+  <td><p>{{$ctrl.Details.san}}</p></td>
+  <td><b style="font-size: smaller;">Latitude:</b></td>
+              <td>
+                <p>{{$ctrl.Details.terminal.location.latitudeDMS}}</p>
+              </td>
+              <td><b style="font-size: smaller;">Repl IDU ESN:</b></td>
+              <td>
+                <p>{{$ctrl.Details.siteOrder.replIDUESN}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td><b style="font-size: smaller;">Visit Type:</b></td>
+              <td>
+                <p>{{$ctrl.Details.siteOrder.visitType}}
+              </td>
+              <td> <b style="font-size: smaller;">Serial#:</b></td>
+              <td>
+                <p>{{$ctrl.Details.terminal.esn}}</p>
+              </td>
+              <td><b style="font-size: smaller;">Longitude:</b></td>
+              <td>
+                <p>{{$ctrl.Details.terminal.location.longitudeDMS}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Repl ODU ESN:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.siteOrder.replODUESN}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><b style="font-size: smaller;">Installer Id:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.installer.id}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Adapter Type:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.terminal.adapterType}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">UL/DL Group:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.terminal.location.longitudeDMS}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Antenna Part#:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.outdoorUnit.antenna.partNumber}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><b style="font-size: smaller;">Installer Name:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.installer.name}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Gateway Id:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.terminal.gatewayId}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Beam Id:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.terminal.beamId}}</p>
+              </td>
+              <td>
+                <p><b style="font-size: smaller;">Company Type:</b></p>
+              </td>
+              <td>
+                <p>{{$ctrl.Details.company}}</p>
+              </td>
+            </tr>
+
+            <tbody>
+
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-6 form-group">
+      <div class="col-md-12">
+        <h5 style="color: #0aa89e;">Step 2: Choose The Antenna Size That You Will Install</h5>
+      </div>
+
+      <div class="col-md-12">
+        <div class="col-md-12" ng-repeat="x in $ctrl.antennas">
+          <label class="checkbox-inline checkbox-styled">
+             <input type="radio" ng-value="x.size" ng-model="$ctrl.antenna"><span>{{ x.description }}</span>
+         </label>
+        </div>
+
+        <!-- <div class="col-md-12 text-right" ng-repeat="x in $ctrl.antennas">
+          <input type="radio" name="ant" ng-value="x.size" ng-model="$ctrl.antenna">{{x.description}}
+        </div> -->
+
+      </div>
+
+    </div>
+    <div class="col-md-6  form-group">
+      <div class="col-md-12">
+        <h5 style="color: #0aa89e;">Step 3: Choose The Mount Type That You Will Install</h5>
+      </div>
+
+      <div class="col-md-6 col-md-offset-3 text-left" ng-repeat="x in $ctrl.mounts">
+        <label class="checkbox-inline checkbox-styled">
+           <input type="radio" ng-value="x.code + $index" ng-model="$ctrl.mount"><span>{{ x.description }}</span>
+       </label>
+      </div>
+    </div>
+  </div>
+
+
+  <hr>
+  <div class="row text-center">
+    <button type="button" class="btn btn-danger  " ng-click="$ctrl.Procced();" name="button">Proceed</button>
+  </div>
+  <br>
+
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="card" style="margin-top:10px;" ng-show="$ctrl.OVT2">
+  <div class="card-head card-head-xs style-info">
+    <header>TDS/Jupiter On-Site Validation Tool (2 of 3)</header>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12 card">
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">SAN</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.san}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Visit Type</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.siteOrder.visitType}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">UL Atten</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.beamValues.ulAttenuation}}</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Adapter type</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.adapterType}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">FSO</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.siteOrder.fso}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">DL Atten</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.beamValues.dlAttenuation}}</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Gateway ID</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.gatewayId}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Installer Name</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.installer.name}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">UL Atten Offset</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.beamValues.ulAttenuationOffset}}</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Beam ID</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.beamId}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Installer Id</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.installer.id}}</small></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">DL Aften Offset</small></td>
+                <td style="padding:0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.beamValues.dlAttenuationOffset}}</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Latitude/QLast</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.location.qlat}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Modem Temp</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.modemTemp }}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Normalized UL Es/No</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxx</small></td>
+              </tr>
+
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Longitude/QLng</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.location.qlng}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Reboot count</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.rebootCount }}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Normalized DL Es/No</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxx</small></td>
+              </tr>
+
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">UL/DL Group</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxxx</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Last Reboot Time</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.rebootTime}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Real-Time UL Es/No</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxx</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Antenna size</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.outdoorUnit.antenna.size}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Last Reboot Reason</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.rebootReason.description}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Real-Time DL Es/No</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxx</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">ODU Power</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.outdoorUnit.radio.power}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">SW Version</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.softwareVersion}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Real-Time Stats Updated Date</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxx</small></td>
+              </tr>
+
+              <tr>
+                <td style="padding: 2px !important;"><b><small class="font-reduced">Polarization</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.polarization}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">IDU SN</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxxx</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Real-Time Outrote Offset</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.realtimeOffsets.outrouteOffset}}</small></td>
+              </tr>
+
+              <tr>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Activation Date</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">xxxxxxxx</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">ODU SN</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.terminal.odusn}}</small></td>
+                <td style="padding: 0px !important;"><b><small class="font-reduced">Last Processed Date</small></b></td>
+                <td style="padding: 0px !important;"><small class="font-reduced">{{$ctrl.DetailsOVT2.processedDate}}</small></td>
+              </tr>
+
+
+            </tbody>
+
+
+          </table>
+
+        </div>
+        <div class="row">
+          <button class="btn btn-info btn-default-bright btn-sm" ng-click="$ctrl.GetCurrentStats();">GET CURRENT STATS</button>
+          <button class="btn btn-info btn-default-bright btn-sm" ng-click="$ctrl.ForceRange()">FORCE RANGE</button>
+          <button class="btn btn-primary btn-default-bright btn-sm" ng-click="$ctrl.ClearTerminal();">CLEAR TERMINAL STATS</button>
+          <button class="btn btn-primary btn-default-bright btn-sm" ng-click="$ctrl.ReloadTables();">RELOAD TABLES</button>
+          <button class="btn btn-primary btn-default-bright btn-sm" ng-click="$ctrl.ForceFallBack();">FORCE FALLBACK</button>
+          <button class="btn btn-warningbtn-default-bright btn-sm" ng-click="$ctrl.Reboot();">REBOOT</button>
+          <button class="btn btn-danger btn-default-bright btn-sm" ng-click="$ctrl.abrirSignOff();">SIGN OFF</button>
+
+          <table class="table">
+            <thead>
+              <th></th>
+              <th>Timestamp</th>
+              <th>Operating UL Es/No</th>
+              <th>UL Margin</th>
+              <th>Symbol Rate-FEC</th>
+              <th>UL Es/No Avail</th>
+              <th>DL Es/No</th>
+              <th>MODCOD</th>
+              <th>pkt loss %</th>
+              <th>UL Devation</th>
+              <th>DL Devation</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Target Values</td>
+                <td>0</td>
+                <!-- {{$ctrl.DetailsOVT2.terminal.odusn}} -->
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.ulEsNoAvail}}</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.dlEsNo}}</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.modcod}}</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.pktLossPct}}</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.ulDev}}</td>
+                <td>{{$ctrl.DetailsOVT2.targetValues.dlDev}}</td>
+
+
+              </tr>
+              <tr>
+                <td>current Values</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.timestamp}}</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.ulEsNoAvail}}</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.dlEsNo}}</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.modcod}}</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.pktLossPct}}</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.ulDev}}</td>
+                <td>{{$ctrl.DetailsOVT2.currentValues.dlDev}}</td>
+              </tr>
+
+              <tr>
+                <td>Diference</td>
+
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.ulEsNoAvail}}</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.dlEsNo}}</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.modcod}}</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.pktLossPct}}</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.ulDev}}</td>
+                <td>{{$ctrl.DetailsOVT2.differenceValues.dlDev}}</td>
+
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+
+        </div>
+        <div class="row">
+          Diagnosis: {{$ctrl.DetailsOVT2.diagnosis.recommendedDiagnosis.name}} <br> Recommended action:
+          <input type="text" class="form-control" ng-model="$ctrl.RecomendedDiag">
+          <button class="btn btn-success btn-xs" ng-click="$ctrl.CompleteAction();">Completed action</button>
+        </div>
+      </div>
+      <div class="col-md-12 card" ui-if="$ctrl.showmapa">
+        <ng-map center="[21.927982539177396, -102.29935909851838]" style="height:100%; width:100%;">
+          <marker icon="{{$ctrl.customIcon}}" position="{{$ctrl.points.latitude}}, {{$ctrl.points.longitude}}"></marker>
+        </ng-map>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
