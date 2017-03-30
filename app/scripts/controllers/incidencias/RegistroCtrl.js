@@ -36,10 +36,10 @@ function RegistroCtrl(ngNotify, incidenciasFactory, $state, $filter) {
 			};
 			incidenciasFactory.addTicket(addTi).then(function(data) {
 				if (data.AddTicketResult > 0) {
-					ngNotify.set('Suscriptor agregado correctamente.', 'success');
+					ngNotify.set('Ticket agregado correctamente.', 'success');
 					$state.go('home.incidencias.registro');
 				} else {
-					ngNotify.set('Error al agregar el suscriptor.', 'error');
+					ngNotify.set('Error al agregar el ticket.', 'error');
 				}
 			});
 		}

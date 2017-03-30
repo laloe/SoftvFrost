@@ -1,6 +1,6 @@
 'use strict';
 
-function BandejaCtrl($uibModal,incidenciasFactory) {
+function BandejaCtrl($uibModal,incidenciasFactory, $scope) {
 	function initial() {
 		incidenciasFactory.getTickets().then(function(data) {
 			vm.tickets = data.GetTicketListResult;
@@ -25,6 +25,18 @@ function BandejaCtrl($uibModal,incidenciasFactory) {
 				}
 			}
 		});
+	}
+
+	$scope.exportAction = function(){ 
+		switch($scope.export_action){ 
+			case 'pdf': $scope.$broadcast('export-pdf', {}); 
+						break; 
+			case 'excel': $scope.$broadcast('export-excel', {}); 
+						break; 
+			case 'doc': $scope.$broadcast('export-doc', {});
+						break; 
+			default: console.log('no event caught'); 
+		}
 	}
 
 	var vm = this;
