@@ -28,10 +28,6 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 		});
 	}
 
-	function DetalleMovimientos() {
-		alert('Movimientos');
-	}
-
 	function editarSuscriptor(item) {
 		$state.go('home.provision.suscriptoresEditar', {
 			params: {
@@ -103,7 +99,6 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 
 	var vm = this;
 	vm.DetalleSuscriptor = DetalleSuscriptor;
-	vm.DetalleMovimientos = DetalleMovimientos;
 	vm.editarSuscriptor = editarSuscriptor;
 	vm.cambiarBusqueda = cambiarBusqueda;
 	vm.buscar = buscar;

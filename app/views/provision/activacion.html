@@ -1,0 +1,47 @@
+<div class="card" style="margin-top:20px;">
+	<div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+		<header>
+			<strong style="font-weight:bold; border:none; margin-left:10px;">Activación de Terminales</strong>
+			<br /><small class="text-muted" style="font-size:14px; margin-left:10px;"><i class="fa fa-home" aria-hidden="true"></i> Provisión>Activación</small>
+		</header>
+    <div class="tools">
+			<div class="btn-group">
+			</div>
+		</div>
+	</div>
+	<div class="section-body">
+		<form angular-validator-submit="$ctrl.activarTerminal()" name="myForm" class="form-horizontal" novalidate angular-validator>
+			<div class="panel form-element-padding">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4">
+							<b>SAN</b><br>
+							<input type="text" class="form-control input-sm" placeholder="SAN" name="san" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" ng-model="$ctrl.SAN">
+						</div>
+						<div class="col-md-2" style="margin-top:20px;">
+							<a class="btn btn-primary btn-sm" ng-click="$ctrl.validarSAN()"><i class="fa fa-search"></i> Validar SAN</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<b>PIN</b><br>
+							<input type="text" ng-disabled="true" class="form-control input-sm" placeholder="PIN" name="pin" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" ng-model="$ctrl.PIN">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<b>ESN</b><br>
+							<input type="text" class="form-control input-sm" ng-disabled="$ctrl.bockEsn" placeholder="ESN" name="esn" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" ng-model="$ctrl.ESN">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 text-left">
+							<br>
+							<button class="btn btn-raised btn-success btn-sm" type="submit">Activar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+  </div>
+</div>

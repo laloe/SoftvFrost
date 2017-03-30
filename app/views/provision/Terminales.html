@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="margin-top:20px;">
   <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
     <header>
       <strong style="font-weight:bold; border:none; margin-left:10px;">Terminales</strong>
@@ -78,8 +78,8 @@
             <td>{{x.Estatus}}</td>
             <td>
               <a ng-click="$ctrl.GestionTerminal(x)" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gestionar Terminal"><i class="fa fa-laptop" aria-hidden="true"></i></a>
-              <a ui-sref="home.provision.terminalesmovimientos" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-              <a ng-click="$ctrl.EditarTerminal(x)" permission permission-only="'terminalesUpdate'" class="btn  btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar Terminal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a ng-click="$ctrl.verMovimientos(x)" class="btn  btn-xs btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movimientos"><i class="fa fa-exchange" aria-hidden="true"></i></a>
+              <!-- <a ng-click="$ctrl.EditarTerminal(x)" permission permission-only="'terminalesUpdate'" class="btn  btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar Terminal"><i class="fa fa-pencil" aria-hidden="true"></i></a> -->
             </td>
           </tr>
         </tbody>

@@ -3,55 +3,98 @@
     <h4 class="modal-title">Gestión Terminal #{{ctrl.Terminal.SAN}}</h4>
 </div>
 <div class="modal-body" style="padding-top:20px;">
-<div class="row form-group">
-  <div class="col-md-6">
-  <b style="font-size:14px;">Servicio:</b>
-  <p style="font-size:14px;">{{ctrl.Terminal.Servicio}}</p>
+  <div class="row">
+    <div class="col-md-4">
+      <b style="font-size:14px;">Suscriptor:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.Suscriptor}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Servicio:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.Servicio}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Fecha Alta:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.FechaAlta}}</p>
+    </div>
   </div>
-  <div class="col-md-6">
-  <b style="font-size:14px;">Suscriptor:</b>
-  <p style="font-size:14px;">{{ctrl.Terminal.Suscriptor}}</p>
+  <div class="row">
+    <div class="col-md-4">
+      <b style="font-size:14px;">Fecha Baja:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.FechaSuspension}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Latitud:</b><br>
+      <p style="font-size:14px;">{{ctrl.Terminal.Latitud}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Longitud:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.Longitud}}</p>
+    </div>
   </div>
-<div class="col-md-6">
-
-<b style="font-size:14px;">Fecha Alta:</b>
-<p style="font-size:14px;">{{ctrl.Terminal.FechaAlta}}</p>
-</div>
-<div class="col-md-6">
-
-<b style="font-size:14px;">Fecha Baja:</b>
-<p style="font-size:14px;">{{ctrl.Terminal.FechaSuspension}}</p>
-</div>
-
-<div class="col-md-6">
-
-<b style="font-size:14px;">Latitud:</b><br>
-<p style="font-size:14px;">{{ctrl.Terminal.Latitud}}</p>
-</div>
-
-<div class="col-md-6">
-<b style="font-size:14px;">Longitud:</b>
-<p style="font-size:14px;">{{ctrl.Terminal.Longitud}}</p>
-</div>
-<div class="col-md-6">
-<b style="font-size:14px;">Status:</b>
-<p style="font-size:14px;">{{ctrl.Terminal.Estatus}}</p>
-</div>
-<div class="col-md-6">
-<b style="font-size:14px;">ESN:</b><br>
-<p style="font-size:14px;">{{ctrl.Terminal.ESN}}</p>
-</div>
+  <div class="row">
+    <div class="col-md-4">
+      <b style="font-size:14px;">Status:</b>
+      <p style="font-size:14px;">{{ctrl.Terminal.Estatus}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">ESN:</b><br>
+      <p style="font-size:14px;">{{ctrl.Terminal.ESN}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Fap Status:</b>
+      <p style="font-size:14px;">{{ctrl.FapStatus}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="text-center">
+      <h5><b>Consumo de Terminal (MB)</b></h5>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Disponible:</b><br>
+      <p style="font-size:14px;">{{ctrl.Consumo.Disponible}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Consumo:</b><br>
+      <p style="font-size:14px;">{{ctrl.Consumo.Consumido}}</p>
+    </div>
+    <div class="col-md-4">
+      <b style="font-size:14px;">Día de relleno:</b><br>
+      <p style="font-size:14px;">{{ctrl.Consumo.DiaRelleno}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <b style="font-size:14px;">Token disponible:</b><br>
+      <p style="font-size:14px;">{{ctrl.Token}}</p>
+    </div>
+  </div>
 </div>
 
 <div class="row form-group text-center">
-<b><h5>Transacciones</h5></b>
-<table class="table">
-
-</table>
-</div>
-
+  <h5><b>Transacciones</b></h5>
+    <div class="col-md-4" style="padding-left: 25px;">
+      <b>Comando</b>
+      <br>
+      <select ng-model="ctrl.Comando" class="form-control" name="comando" ng-options="item.Nombre for item in ctrl.Comandos track by item.IdComando" validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
+        <option value="">Selecciona un comando</option>
+        </select>
+    </div>
+    <div class="col-md-4" ng-if="ctrl.Comando.IdComando == 5">
+        <b>Cantidad</b>
+        <input type="text" name="cantidadToken" validate-on="dirty" class="form-control" ng-model="ctrl.cantidadToken" required-message="'Error!, Este campo es obligatorio.'" required>
+    </div>
+    <div class="col-md-4" ng-if="ctrl.Comando.IdComando == 6">
+      <b>Servicio</b>
+      <br>
+      <select ng-model="ctrl.Servicio" class="form-control" name="comando" ng-options="item.Nombre for item in ctrl.Servicios track by item.IdServicio" validate-on="dirty" required-message="'Este campo es obligatorio.'" required>
+        <option value="">Selecciona un servicio</option>
+        </select>
+    </div>
+    <div class="col-md-2" >
+      <br>
+      <button class="btn pull-right btn-raised btn-success" type="button" ng-click="ctrl.aplicaComando()">Aplicar</button>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cerrar</button>
-
 </div>

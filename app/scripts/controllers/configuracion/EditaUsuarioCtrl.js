@@ -4,23 +4,27 @@ angular.module('softvFrostApp').controller('EditaUsuarioCtrl', EditaUsuarioCtrl)
 function EditaUsuarioCtrl(usuarioFactory, rolFactory, $state, ngNotify, $stateParams) {
 
 	function init() {
-		var user = $stateParams.obj;
-		vm.Id = user.IdUsuario;
-		rolFactory.GetRoleList().then(function(data) {
-			vm.Roles = data.GetRoleListResult;
-			for (var a = 0; a < vm.Roles.length; a++) {
-				if (vm.Roles[a].IdRol == user.IdRol) {
-					vm.Rol = vm.Roles[a];
+		var userid = $stateParams.id;
+		console.log(userid);
+		usuarioFactory.GetUserDetail(userid).then(function(data) {
+			var user = data.GetUserListbyIdUserResult[0];
+			vm.Id = user.IdUsuario;
+			rolFactory.GetRoleList().then(function(data) {
+				vm.Roles = data.GetRoleListResult;
+				for (var a = 0; a < vm.Roles.length; a++) {
+					if (vm.Roles[a].IdRol == user.IdRol) {
+						vm.Rol = vm.Roles[a];
+					}
 				}
-			}
-			vm.Nombre = user.Nombre;
-			vm.Correo = user.Email;
-			vm.Descripcion = user.Usuario;
-			vm.Password = user.Password;
-			vm.Contrasena = user.Password;
+				vm.Nombre = user.Nombre;
+				vm.Correo = user.Email;
+				vm.Descripcion = user.Usuario;
+				vm.Password = user.Password;
+				vm.Contrasena = user.Password;
+			});
 
 		});
-	};
+	}
 
 	function GuardarUsuario() {
 		if (vm.editar) {

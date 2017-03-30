@@ -4,6 +4,7 @@ angular.module('softvFrostApp')
 		var factory = {};
 		var paths = {
 			getUsuarioList: '/Usuario/GetUsuarioList',
+			GetUserDetail: '/Usuario/GetUserListbyIdUser',
 			AddUsuario: '/Usuario/AddUsuario',
 			UpdateUsuario: '/Usuario/UpdateUsuario',
 			BuscaUsuario: '/Usuario/GetUsuario2List'
@@ -22,6 +23,25 @@ angular.module('softvFrostApp')
 				deferred.reject(data);
 			});
 			return deferred.promise;
+		};
+
+		factory.GetUserDetail = function(id) {
+			var deferred = $q.defer();
+			var Parametros = {
+				'IdUsuario': id
+			};
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token
+				}
+			};
+			$http.post(globalService.getUrl() + paths.GetUserDetail, JSON.stringify(Parametros), config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(data) {
+				deferred.reject(data);
+			});
+			return deferred.promise;
+
 		};
 
 		factory.AddUsuario = function(object) {
@@ -76,14 +96,16 @@ angular.module('softvFrostApp')
 
 		};
 
-		factory.BuscaUsuario = function(name) {
+		factory.BuscaUsuario = function(obj) {
 			var deferred = $q.defer();
 			var Parametros = {
-				'Nombre': '',
-				'Email': '',
-				'Usuario2': name,
-				'Op': 0
+				'Nombre': obj.Nombre,
+				'Email': obj.Email,
+				'Usuario2': obj.Usuario2,
+				'Op': obj.Op,
+				'IdRol': obj.IdRol
 			};
+			console.log(Parametros);
 			var config = {
 				headers: {
 					'Authorization': $localStorage.currentUser.token
