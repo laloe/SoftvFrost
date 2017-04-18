@@ -2,7 +2,7 @@
   .font-reduced {
     font-size: 13px;
   }
-
+  
   .table>tfoot>tr>td {
     padding: 5px !important;
   }
@@ -13,18 +13,34 @@
     <header>HughesNet <small class="text-muted">TDS/Jupiter-Onsite Validation Tool (1 of 3)</small> </header>
   </div>
 
-  <div class="row text-center">
-    <h5 style="color: #0aa89e;">Step 1: Verify FSO and Site Information> </h5>
-  </div>
-  <div class="row text-center">
-    <button type="button" class="btn btn-sm btn-default" name="button" ng-click="$ctrl.getRefresh()"><i class="fa fa-refesh
-"></i> Refresh Site Info</button>
-    <button type="button" class="btn btn-sm btn-default-dark" name="button" ng-click="$ctrl.getPing()"><i class="fa fa-terminal"></i> Ping Terminal</button>
+  <div class="card text-center">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="padding: 20px;">
+        <b>Please enter a valid SAN to Proceed </b><br><br>
+        <input type="text" class="form-control" placeholder=" " ng-model="$ctrl.SAN">
+        <BR>
+        <button class="btn btn-block btn-primary" ng-click="$ctrl.validate()">Validate</button>
+
+</div>
+<div class="col-md-3"></div>
+
+    </div>
+
   </div>
 
   <div class="card">
-
     <div class="card-body">
+
+      <div class="row text-center">
+        <h5 style="color: #0aa89e;">Step 1: Verify FSO and Site Information> </h5>
+      </div>
+      <div class="row text-center">
+        <button type="button" class="btn btn-sm btn-default" name="button" ng-click="$ctrl.getRefresh()"><i class="fa fa-refesh
+"></i> Refresh Site Info</button>
+        <button type="button" class="btn btn-sm btn-default-dark" name="button" ng-click="$ctrl.getPing()"><i class="fa fa-terminal"></i> Ping Terminal</button>
+      </div>
+
       <div class="table-responsive">
         <table class="table no-margin">
           <tbody>
@@ -371,7 +387,7 @@
         </div>
       </div>
       <div class="col-md-12 card" ui-if="$ctrl.showmapa">
-        <ng-map center="[21.927982539177396, -102.29935909851838]" style="height:100%; width:100%;">
+        <ng-map zoom="9" style="height:100%; width:100%;">
           <marker icon="{{$ctrl.customIcon}}" position="{{$ctrl.points.latitude}}, {{$ctrl.points.longitude}}"></marker>
         </ng-map>
       </div>

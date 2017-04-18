@@ -16,7 +16,7 @@ angular
 				'password': credentials.password,
 				'san': credentials.san
 			};
-			$http.post(globalService.getUrl() + paths.GetOVTToken, parametros).then(function(response) {
+			$http.post(globalService.getUrlHughesMonitoreo() + paths.GetOVTToken, parametros).then(function(response) {
 				var token = JSON.parse(response.data[0].token);
 				$localStorage.currentData = {
 					token: token.token
@@ -36,7 +36,7 @@ angular
 				'Jdata': obj.Jdata,
 				'method': obj.method
 			};
-			$http.post(globalService.getUrl() + paths.DataOVT,
+			$http.post(globalService.getUrlHughesMonitoreo() + paths.DataOVT,
 				parametros
 			).then(function(response) {
 				deferred.resolve(response.data);

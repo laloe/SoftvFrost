@@ -5,6 +5,7 @@ function SuscriptorCtrl(SuscriptorFactory, $uibModal, $state, nuevoSuscriptorFac
 	this.$onInit = function() {
 		SuscriptorFactory.getSuscriptorList().then(function(data) {
 			vm.suscriptores = data.GetSuscriptorListResult;
+			console.log(data);
 		});
 	}
 

@@ -24,6 +24,7 @@ angular
 					objmodel.Jdata = '';
 					objmodel.method = 'OVTGET';
 					OVTFactory.DataOVT(objmodel).then(function(datamodel) {
+						console.log(datamodel);
 						vm.visittype = false;
 						vm.sight = false;
 						vm.modemsoftware = false;

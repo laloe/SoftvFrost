@@ -1,12 +1,16 @@
 'use strict';
 angular
 	.module('softvFrostApp')
-	.controller('DisplayForSanCtrl', function($uibModal, $state, ngNotify, $location, displayFactory, diagnosticFactory) {
-		function initial() {
-			diagnosticFactory.getLoginUid().then(function(data) {
-				vm.token = data[0].loginuuid;
+	.controller('DisplayForSanCtrl', function ($uibModal, $state, ngNotify, $location, displayFactory, diagnosticFactory) {
+		var vm = this;
+		vm.displayTest = displayTest;
+		vm.validate = validate;
 
-				displayFactory.displaySpeed(vm.token).then(function(data) {
+		function validate() {
+			diagnosticFactory.getLoginUid().then(function (data) {
+				vm.token = data[0].loginuuid;
+				var san = hughesGetSanCompuesto(vm.SAN);
+				displayFactory.displaySpeed(vm.token, san).then(function (data) {
 					vm.datos = JSON.parse(data);
 					vm.ip = vm.datos.IPConnectivityStatus;
 					vm.jul1 = vm.datos.JuDDLevel1;
@@ -29,29 +33,39 @@ angular
 					vm.entry5 = vm.str5.split(",");
 
 				});
-
 			});
-
-
 		}
+
+		function hughesGetSanCompuesto(obj) {
+			var a = obj.toString();
+			var i;
+			for (i = a.length; i < 9; i++) {
+				a = '0' + a;
+			}
+			return 'TLV' + a;
+		};
 
 		function displayTest() {
-			vm.animationsEnabled = true;
-			var modalInstance = $uibModal.open({
-				animation: vm.animationsEnabled,
-				ariaLabelledBy: 'modal-title',
-				ariaDescribedBy: 'modal-body',
-				templateUrl: 'views/monitoreo/modalSpeedTest.html',
-				controller: 'SpeedTestCtrl',
-				controllerAs: '$ctrl',
-				backdrop: 'static',
-				keyboard: false,
-				size: 'sm'
+			var san = hughesGetSanCompuesto(vm.SAN);
+			displayFactory.speed(vm.token, san).then(function (data) {
+				vm.datos = JSON.parse(data);
+				var modalInstance = $uibModal.open({
+					animation: true,
+					ariaLabelledBy: 'modal-title',
+					ariaDescribedBy: 'modal-body',
+					templateUrl: 'views/monitoreo/modalSpeedTest.html',
+					controller: 'SpeedTestCtrl',
+					controllerAs: '$ctrl',
+					backdrop: 'static',
+					keyboard: false,
+					size: 'sm',
+					resolve: {
+						items: function () {
+							return vm.datos;
+						}
+					}
+				});
 			});
 		}
 
-
-		var vm = this;
-		vm.displayTest = displayTest;
-		initial();
 	});

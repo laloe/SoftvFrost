@@ -191,6 +191,11 @@ function NuevaTerminalCtrl(terminalFactory, $uibModal, $rootScope, ngNotify, $st
 		});
 	}
 
+function convertDate(inputFormat) {
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+  var d = new Date(inputFormat);
+  return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+}
 
 
 
@@ -200,7 +205,9 @@ function NuevaTerminalCtrl(terminalFactory, $uibModal, $rootScope, ngNotify, $st
 	vm.ValidarServicio = ValidarServicio;
 	vm.BuscaLatLong = BuscaLatLong;
 	vm.GuardaTerminal = GuardaTerminal;
-	vm.ListaStatus = [{
+	vm.FechaAlta =  convertDate(new Date());
+	vm.ListaStatus = [		
+		{
 		'clave': 'Pendiente',
 		'Nombre': 'Pendiente'
 	},
@@ -215,6 +222,10 @@ function NuevaTerminalCtrl(terminalFactory, $uibModal, $rootScope, ngNotify, $st
 	{
 		'clave': 'Cancelada',
 		'Nombre': 'Cancelada'
+	},
+	{
+		'clave': 'Incompleta',
+		'Nombre': 'Incompleta'
 	}
 	];
 }

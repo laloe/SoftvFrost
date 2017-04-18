@@ -44,7 +44,15 @@
                   <select class="form-control input-sm" ng-model="$ctrl.bservicio" ng-change="$ctrl.busquedaCambio(3)" ng-options="v.Nombre for v in $ctrl.servicios track by v.IdServicio"></select>
                 </div>
               </div>
-              <div class="col-md-4">
+
+              <div class="col-md-2">
+              <div class="panel-body">
+                  <select type="text" ng-change="$ctrl.busquedaCambio(4)"  ng-options="item as item.Nombre for item in $ctrl.ListaStatus track by item.clave" class="form-control input-sm" ng-model="$ctrl.Status" ng-init="$ctrl.Status.clave='Pendiente'">
+                    </select>
+</div>
+              </div>
+
+              <div class="col-md-2">
                 <div class="panel-body">
                   <button type="button" class="btn btn-raised btn-sm btn-primary" ng-click="$ctrl.buscar()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
 

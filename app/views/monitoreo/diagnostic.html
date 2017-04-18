@@ -1,18 +1,29 @@
 <div class="card" style="margin-top:20px;">
-  <div class="card-head card-head-xs style-info">
-    <header>HughesNet <small class="text-muted">TDS/Jupiter-Site Diagnostic Tool</small> </header>
-  </div>
-  <div class="row">
+ <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+      <header>
+        <strong style="font-weight:bold; border:none; margin-left:10px;">TDS/Jupiter-Site Diagnostic Tool</strong>
+        <br /><small class="text-muted" style="font-size:14px; margin-left:10px;"> <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>><a href="#" class="paginaActiva">Monitoreo</a></small>
+
+      </header>
+      <div class="tools">
+
+       
+
+      </div>
+    </div>
+
+  
+  <div class="row ">
     <form ng-submit="$ctrl.searchSan()">
       <div class="col-md-5" style="min-height: 100px; padding-top:20px;">
         <div class="col-md-1">
           <label>San:</label>
         </div>
         <div class="col-md-5">
-          <input type="text" class="form-control" ng-model="$ctrl.san" />
+          <input type="number" class="form-control" ng-model="$ctrl.san" />
         </div>
         <div class="col-md-6" style="padding-top:5px; padding-left:-5px;">
-          <button type="submit" class="btn btn-sm btn-default">Search</button>
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</button>
         </div>
       </div>
     </form>

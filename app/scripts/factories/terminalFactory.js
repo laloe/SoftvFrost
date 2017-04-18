@@ -26,6 +26,7 @@ angular.module('softvFrostApp')
 			getMovimientosBySan: '/Movimiento/GetMovimientoListBySAN',
 			detalleMovimiento: '/Movimiento/GetDeepMovimiento',
 			sigleMovimiento: '/DetalleMovimiento/GetDetalleMovimientoIdList'
+			
 		};
 
 		factory.sigleMovimiento = function(id) {

@@ -46,6 +46,16 @@ angular.module('softvFrostApp').config(function($stateProvider) {
 			templateUrl: 'views/monitoreo/displayForSan.html',
 			controller: 'DisplayForSanCtrl',
 			controllerAs: '$ctrl'
+		},
+		{
+			name: 'home.monitoreo.MapaTerminales',
+			data: {
+				pageTitle: 'BIENVENIDO | MONITOREO SOFTV',
+			},
+			url: '/monitoreo/MapaTerminales',
+			templateUrl: 'views/monitoreo/MapaTerminales.html',
+			controller: 'MapaTerminalesCtrl',
+			controllerAs: '$ctrl'
 		}
 	];
 

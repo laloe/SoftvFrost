@@ -33,11 +33,11 @@
                   <br>
                   <div class="col-md-4">
                     <b>Latitud</b>
-                    <input type="text" class="form-control" name="latitus" validate-on="dirty" required-message="'Este campo es obligatorio.'" required validate-on="dirty" placeholder="Latitud" ng-model="$ctrl.Latitud">
+                    <input type="text" class="form-control" name="latitus" validate-on="dirty" required-message="'Este campo es obligatorio.'" required validate-on="dirty" placeholder="Ejemplo: -12.256555" ng-model="$ctrl.Latitud">
                   </div>
                   <div class="col-md-4">
                     <b>Longuitud</b><br>
-                    <input type="text" name="longitud" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" class="form-control" placeholder="Longuitud" ng-model="$ctrl.Longuitud">
+                    <input type="text" name="longitud" required-message="'Este campo es obligatorio.'" validate-on="dirty" required validate-on="dirty" class="form-control" placeholder="Ejemplo: 2.2888555" ng-model="$ctrl.Longuitud">
                   </div>
                   <div class="col-md-1" style="margin-top:20px;">
                       <a class="btn btn-warning btn-sm" ng-click="$ctrl.BuscaLatLong()"><i class="fa fa-globe"></i></a>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-md-5">
                   <b>Fecha de alta</b><br>
-                  <input type="date" class="form-control input-sm" validate-on="dirty" name="fecha" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-model="$ctrl.FechaAlta">
+                  <input type="text" class="form-control input-sm" validate-on="dirty"  name="fecha" required-message="'Este campo es obligatorio.'" required validate-on="dirty" ng-model="$ctrl.FechaAlta" ng-disabled="true">
                 </div>
               </div>
               <div class="row">

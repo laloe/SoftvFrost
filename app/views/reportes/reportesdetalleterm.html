@@ -1,0 +1,331 @@
+
+<style type="text/css">
+
+  th{font-size: 9.8pt;}
+  td {font-size: 9.8pt;}
+
+  td.media{font-size: 9pt;}
+
+  .btn-csv {
+    background-color: #fff;
+    border-color: #008b45;
+    font-size: 11.5px;
+    color:#008b45; /*font-size: 13px;*/
+  }
+
+  .btn-pdf {
+    background-color: #fff;
+    border-color: #8B0000;
+    font-size: 11.5px;
+    color:#8B0000;
+
+  }
+
+.btn-csv:hover
+{
+    background-color: #008b45;
+    border-color: #fff;
+    font-size: 11.5px;
+    color:#fff;
+}
+
+.btn-pdf:hover
+{
+    background-color: #8B0000;
+    border-color: #fff;
+    font-size: 11.5px;
+    color:#fff;
+
+}
+
+
+.color-green {
+  color: green;
+}
+
+.color-blue {
+  color: #1E90FF; /*dodgerblue*/
+}
+
+.color-red {
+  color: red;
+}
+.color-orange {
+  color: orange;
+}
+
+.color-yellow {
+  color: #999900; /*amarillo*/
+}
+
+</style>
+
+<div id="pdfreportimages" style="display:none" >
+    <img crossorigin="" src="images/StarGoPng.png" id ="pdflogoimage">
+</div>
+
+
+
+<div class="card" style="margin-top:20px; padding-bottom: 30px">
+  <div class="card-head style-default-light" style="padding-top:10px; padding-left:10px;">
+    <header>
+      <strong style="font-weight:bold; border:none; margin-left:10px;">Reportes</strong>
+      <br /><small class="text-muted" style="font-size:14px; margin-left:10px;"><i class="fa fa-home" aria-hidden="true"></i> Reportes>Detalle de Terminales</small>
+    </header>
+        <div class="tools">
+
+        </div>
+  </div>
+  <div class="section-body">
+        <div class="col-md-12">
+          <div class="panel-heading">
+            <div class="tools">
+                <div class="panel-group" id="suscriptor">
+                                         
+                  <div class="row">
+
+                     <div class="form-group col-md-4" >
+                        <label class="col-sm-4 control-label text-left">Cliente</label>
+                        <div class="col-sm-8"  >
+                          <select class="form-control" ng-model="$ctrl.cliente_input"
+                              ng-options="v.Nombre for v in $ctrl.listaCliente track by v.IdCliente">  
+                          </select>
+                        </div>                     
+                    </div>
+
+                     <div class="form-group col-md-4">
+                        <label class="col-sm-4 control-label text-left">Beam</label>
+                        <div class="col-sm-8" >
+                          <select class="form-control" ng-model="$ctrl.beam_input"
+                              ng-options="v.Nombre for v in $ctrl.listaBeam track by v.IdBeam">  
+                          </select>
+                        </div>                     
+                    </div>
+
+                  </div>
+
+                    <div class="row">
+
+                     <div class="form-group col-md-4" >
+                        <label class="col-sm-4 control-label text-left">Plan</label>
+                        <div class="col-sm-8" >
+                          <select class="form-control" ng-model="$ctrl.plan_input"
+                              ng-options="v.Nombre for v in $ctrl.listaPlan track by v.IdServicio">          
+                          </select>   
+                        </div>                     
+                    </div>
+
+
+                     <div class="form-group col-md-4">
+                        <label class="col-sm-4 control-label text-left">Estado</label>
+                        <div class="col-sm-8">
+                          <select class="form-control" ng-model="$ctrl.estado_input"
+                              ng-options="v.Nombre for v in $ctrl.listaEstado track by v.IdEstado">  
+                          </select>
+                        </div>                     
+                    </div>
+
+                  </div>
+
+
+                  <div class="row">
+                       <div class="form-group col-md-4">
+                          <label class="col-sm-4 control-label text-left">No. de Serie</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" ng-model="$ctrl.san_input" placeholder="" style=""> 
+                          </div>                     
+                      </div>
+
+
+                      <div class="form-group col-md-4">
+                          <label class="col-sm-4 control-label text-left">Id Suscriptor</label>
+                          <div class="col-sm-8">
+                            <input type="number" class="form-control" ng-model="$ctrl.idSuscriptor_input" placeholder="" style=""> 
+                          </div>                     
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                       <div class="form-group col-md-4" >
+                          <label class="col-sm-4 control-label text-left">Site Id</label>
+                          <div class="col-sm-8" >
+                            <input type="number" class="form-control" ng-model="$ctrl.siteId_input" placeholder="" style="">   
+                          </div>                     
+                      </div>
+
+
+                      <div class="form-group col-md-4" >
+                          <label class="col-sm-4 control-label text-right"></label>
+                        <div class="col-md-8">
+                          <a class="btn btn-primary btn-sm" ng-click="$ctrl.getReporteDetalleT();" data-toggle="tooltip" data-placement="top" title="" data-original-title="Buscar"> <i class="fa fa-search"></i> Buscar</a>
+
+                          <a class="btn btn-info btn-sm"  st-reset-search 
+                          ng-click="$ctrl.limpiarFiltros();" data-toggle="tooltip" data-placement="top" title="" data-original-title="Limpiar filtros"> <i class="fa fa-eraser"></i>Limpiar </a>
+                        </div>                   
+                      </div>  
+                  </div>                  
+
+
+                       <!--end .panel -->
+                </div>
+            </div>
+          </div>
+
+
+
+          <div class="panel form-element-padding" style="margin-top:-25px;">
+
+
+          <!--  <input type="text" ng-model="$ctrl.search" class="form-control" placeholder="buscar san..."> -->
+
+            <table st-table="$ctrl.displayedCollection4" st-safe-src="$ctrl.rowCollection4" class="table table-striped" st-filtered-collection="$ctrl.filteredCollection">
+              <thead>
+              <tr>
+                <th st-sort="SAN">Site <br/> Id</th>
+                <th st-sort="Estado">Estado</i></th>
+                <th st-sort="Cliente">Cliente</th>
+                <th st-sort="Beam">Beam </th>
+                <th st-sort="PlanServ">Plan de Servicio</th>
+                <th st-sort="ESN">Número de Serie</th>
+                <th st-sort="IdSuscriptor">Id <br/>Suscriptor</th>
+                <th st-sort="EstadoFap">Estado FAP </th>
+                <th st-sort="Ipv4">IPV4</th>
+                <th st-sort="Ipv6">IPV6</th>
+                <th st-sort="AssocTime">Assoc <br/> Time</th>
+                <th st-sort="Latitud">Latitud</th> 
+                <th st-sort="Longitud">Longitud</th> 
+                <th st-sort="AvailTokens">Avail <br/>Tokens</th> 
+                <th st-sort="TxBytes">TXBytes</th> 
+                <th st-sort="RxBytes">RXBytes</th> 
+              </tr>
+              <!--<tr>
+                <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+              </tr> -->    
+              <tr>
+                <th>
+                  <input st-search="SAN" placeholder="SAN" class="input-sm form-control" type="search"/>
+                </th>  
+                <th>
+                  <input st-search="Estado" placeholder="Estado" class="input-sm form-control" type="search"/>
+                </th>   
+                <th>
+                  <input st-search="Cliente" placeholder="Cliente" class="input-sm form-control" type="search"/>
+                </th>
+                <th>
+                  <input st-search="Beam" placeholder="Beam" class="input-sm form-control" type="search"/>
+                </th>
+                <th>
+                  <input st-search="PlanServ" placeholder="Plan de Servicio" class="input-sm form-control" type="search"/>
+                </th>    
+               
+                <th>
+                  <input st-search="ESN" placeholder="ESN" class="input-sm form-control" type="search"/>
+                </th>  
+                <th>
+                  <input st-search="IdSuscriptor" placeholder="Id Suscriptor" class="input-sm form-control" type="search" />
+                </th>      
+                <th>
+                  <input st-search="EstadoFap" placeholder="Estado Fap" class="input-sm form-control" type="search"/ >
+                </th>  
+
+                <th colspan="2">
+                  <input st-search placeholder="Ip" class="input-sm form-control" type="search" />
+                </th>
+                <th>
+                  <input st-search="AssocTime" placeholder="Assoc Time" class="input-sm form-control" type="search" />
+                </th>         
+                <th>
+                  <input st-search="Latitud" placeholder="Latitud" class="input-sm form-control" type="search" />
+                </th>   
+                <th>
+                  <input st-search="Longitud" placeholder="Longitud" class="input-sm form-control" type="search" />
+                </th> 
+                <th>
+                  <input st-search="AvailTokens" placeholder="Avail Tokens" class="input-sm form-control" type="search" />
+                </th>         
+                <th>
+                  <input st-search="TxBytes" placeholder="TxBytes" class="input-sm form-control" type="search" />
+                </th>   
+                <th>
+                  <input st-search="RxBytes" placeholder="RxBytes" class="input-sm form-control" type="search" />
+                </th> 
+              </tr>
+
+              </thead><!-- <td>{{row.SAN | uppercase}}</td> -->
+                 <tbody>
+                  
+                        <tr  dir-paginate="row in $ctrl.displayedCollection4|orderBy:sortKey:reverse|filter:$ctrl.search|itemsPerPage:5">                        
+                        <td> {{row.SAN}}</td>                        
+                        <!--<i class="fa fa-check-circle-o" aria-hidden="true"></i>-->
+                        <!-- <td> <i ng-class="{'fa fa-check-circle-o':row.Estado ==='Activa'}"></i> {{row.Estado}} </td> -->                   
+                        <td ng-class = "{'color-yellow':(row.Estado =='Incompleta'), 
+                        'color-blue':(row.Estado=='Pendiente'),
+                        'color-green':(row.Estado=='Activa'),
+                        'color-red':(row.Estado=='Cancelada'),
+                        'color-orange':(row.Estado=='Suspendida')}"> {{row.Estado}}</td> 
+                        <!--
+                        <td>
+                          <i ng-class = "{'fa fa-check-circle-o':(row.Estado =='Activa'), 'fa fa-check-circle-o': (row.Estado == 'Pendiente')}"> 
+                          </i> {{row.Estado}}                          
+                        </td> -->
+
+                        <td> {{row.Cliente}}</td>
+                        <td> {{row.Beam}}</td>
+                        <td>{{row.PlanServ}}</td>                
+                        <td class="media" >{{row.ESN}}</td>
+                        <td>{{row.IdSuscriptor}}</td>
+                        <td>{{row.EstadoFap}}</td>
+                        <td>{{row.Ipv4}}</td>
+                        <td>{{row.Ipv6}}</td>
+                        <td>{{row.AssocTime}}</td>
+                        <td class="media">{{row.Latitud}}</td>
+                        <td class="media">{{row.Longitud}}</td>
+                        <td>{{row.AvailTokens}}</td>
+                        <td>{{row.TxBytes}}</td>
+                        <td>{{row.RxBytes}}</td>
+                      </tr>             
+                </tbody>
+                  <tfoot>
+                  <tr>
+                    <td colspan="18" class="text-left">
+                            <dir-pagination-controls  max-size="5"
+                                                    direction-links="true"
+                                                    boundary-links="true">
+                            </dir-pagination-controls>
+                    </td>
+                  </tr>
+                </tfoot>
+            </table>
+
+          </div>
+
+            <div class="col-md-8  col-md-offset-2"  style="margin-bottom: 20px" align="center" ng-hide="$ctrl.divExportar" >
+              <div class="col-sm-3"  >
+                <button class="btn btn-csv btn-sm " ng-click="$ctrl.crearVisibleAsCsv()"  style="white-space: normal"></i> Exportar datos visibles como CSV </a> </button>
+              </div>                
+              <div class="col-sm-3">
+                <button class="btn btn-csv btn-sm " ng-hide="$ctrl.todoAsCsv" ng-click="$ctrl.crearTodoAsCsv()"  style="white-space: normal"> Exportar todo <br/> como CSV </button>
+              </div>   
+              <div class="col-sm-3">
+                  <button class="btn btn-pdf btn-sm " ng-click="$ctrl.createPdfTodo('visible')"  style="white-space: normal">Exportar datos visibles como pdf</button>
+              </div>         
+              <div class="col-sm-3">
+                <button class="btn btn-pdf btn-sm " ng-click="$ctrl.createPdfTodo('todo')"  style="white-space: normal">Exportar todo <br/> como pdf </button>
+              </div>     
+            </div>
+
+
+                <button class="btn btn-default" id="csvUno" ng-hide="$ctrl.csvUnoHide" csv-column-order="$ctrl.order"  ng-csv="$ctrl.arrayReporte" filename="{{ $ctrl.filename }}.csv" field-separator="," decimal-separator="."  add-bom="true"
+                > esconder botón visible data as csv</button> <!--csv-column-order="$ctrl.order"  -->                
+
+                <button class="btn btn-default" id="csvDos" ng-hide="$ctrl.csvDosHide" csv-column-order="$ctrl.order"  ng-csv="$ctrl.arrayReporte" filename="{{ $ctrl.filename }}.csv" field-separator="," decimal-separator="."  add-bom="true"
+                > esconder botón visible data as csv</button> <!--csv-column-order="$ctrl.order"  -->  
+                
+
+
+
+          </div>
+        </div>
+    </div>
+</div>
